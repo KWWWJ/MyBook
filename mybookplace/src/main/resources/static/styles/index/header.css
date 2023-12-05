@@ -1,0 +1,43 @@
+@charset "UTF-8";
+
+#header-area {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 950px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.top {
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo img {
+    width: 300px;
+}
+
+.logo img:hover {
+    cursor: pointer;
+}
+
+.user-state-login {
+    display: flex;
+}
+
+.user-state-login a {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+
+.user-state-non-login {
+    display: flex;
+    justify-content: space-between;
+    width: 140px;
+}
+
+.user-state-non-login a {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
