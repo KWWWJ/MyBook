@@ -1,0 +1,187 @@
+@charset "UTF-8";
+
+body {
+    display: grid;
+    margin: 0;
+    background-color: black;
+}
+
+#home-area {
+    display: flex;
+    background-image: url("/images/home/main.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.title {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: flex-end;
+    width: 950px;
+    margin-bottom: 50px;
+}
+
+.logo {
+    margin-right: 16%;
+}
+
+.user-state-login {
+    display: flex;
+}
+
+.user-state-login a {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
+
+.user-state-non-login {
+    display: flex;
+    justify-content: space-between;
+    width: 100px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.user-state-non-login a {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
+
+.category {
+    margin-bottom: 200px;
+}
+
+.category-area {
+    display: flex;
+    justify-content: center;
+    width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px 0;
+    margin-top: 30px;
+    border-top: 3px solid rgb(255, 255, 255);
+    border-bottom: 3px solid rgb(255, 255, 255);
+    font-weight: 700;
+}
+
+.category-area a {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
+
+.genre {
+    margin-right: 225px;
+    margin-left: 175px;
+}
+
+.bottom-line {
+    width: 700px;
+    border-bottom: 3px solid rgb(255, 255, 255);
+    margin-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+}
+
+.top-area {
+    width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 700px;
+}
+
+.midle-area {
+    width: 906px;
+    height: 540px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#fixedContainer {
+    position: relative;
+    height: 500px;
+    overflow: auto;
+    z-index: 3;
+    /* fixedContainer의 z-index를 다른 요소보다 크게 설정 */
+}
+
+#fixedContainer::-webkit-scrollbar {
+    display: none;
+}
+
+.main_tit01,
+.main_tit02,
+.main_tit03 {
+    position: sticky;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+    z-index: 2;
+}
+
+.main_tit01.show,
+.main_tit02.show,
+.main_tit03.show {
+    opacity: 0;
+}
+
+.main_tit01 img,
+.main_tit02 img,
+.main_tit03 img {
+    position: absolute;
+    z-index: 3;
+}
+
+.scrollableContent {
+    height: 3000px;
+    z-index: 1;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 950px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.line-bold-double {
+    display: flex;
+    border-top: 10px solid #e8e8e8;
+    border-bottom: 10px solid #e8e8e8;
+    padding: 10px;
+}
+
+.line-font {
+    margin-right: 50px
+}
+
+.line-font:hover {
+    cursor: pointer;
+}
+
+.info-area {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+}
+
+.info-title-font {
+    padding: 30px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+}
+
+.info-font {
+    padding: 30px;
+}
+
+.info-line {
+    height: 60px;
+    border-right: 1px solid black;
+}

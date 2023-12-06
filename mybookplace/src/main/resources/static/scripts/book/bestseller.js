@@ -24,6 +24,15 @@ function setBestseller() {
             listLiElem.append(bookImgElem);
             classDivElem.append(listLiElem);
             bestsellerArea.append(classDivElem)
+
+            bookImgElem.addEventListener('click', function () {
+                if (book.isbn13 != "") {
+                    location.href = "book?booKid=" + book.isbn13;
+                } else {
+                    location.href = "booksub?bookid=" + book.isbn;
+                }
+
+            })
         });
     });
 }
