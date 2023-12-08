@@ -6,7 +6,45 @@
 
 <body>
     <div th:fragment="bookListFragment">
-        장르별 작성 예정
+        <link rel="stylesheet" href="styles/book/bookList.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Gothic+A1&family=Gowun+Dodum&display=swap"
+            rel="stylesheet">
+        <div id="book-list-area">
+            <div class="category-book-area">
+                <div id="category-list">
+
+                </div>
+            </div>
+            <div class="search-box-area"></div>
+            <div class="book-list-area">
+                <div class="category-name">신간도서</div>
+                <div id="book-list"></div>
+                <div class="pagenation-box">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li th:each="page : ${#numbers.sequence(1, 20)}" class="page-item">
+                                <a class="page-link"
+                                    th:href="@{genre(page=${page}, category=${param.category})}">[[${page}]]</a>
+                            </li>
+
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <script src="/scripts/book/bookList.js"></script>
     </div>
 </body>
 

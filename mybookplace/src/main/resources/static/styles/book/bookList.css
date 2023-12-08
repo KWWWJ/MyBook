@@ -1,0 +1,36 @@
+@charset "UTF-8";
+
+.category-name {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 700;
+    font-family: 'Gothic A1', sans-serif;
+    font-family: 'Gowun Dodum', sans-serif;
+}
+
+#book-list {
+    padding: 30px;
+}
+
+#book-list div {
+    display: flex;
+    align-items: center;
+    padding: 20px 20px;
+    font-weight: 700;
+    font-family: 'Gothic A1', sans-serif;
+    background: #fbfbfb;
+}
+
+#book-list img {
+    width: 120px;
+    cursor: pointer;
+}
+
+.book-info {
+    border-bottom: 1px solid #ededed;
+}
+
+.pagenation-box {
+    display: flex;
+    justify-content: center;
+}

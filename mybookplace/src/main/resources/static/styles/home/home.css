@@ -58,6 +58,11 @@ body {
     color: rgb(255, 255, 255);
 }
 
+.user-state-login a:hover {
+    text-decoration: none;
+    color: rgb(255, 255, 182);
+}
+
 .user-state-non-login {
     display: flex;
     justify-content: space-between;
@@ -69,6 +74,11 @@ body {
 .user-state-non-login a {
     text-decoration: none;
     color: rgb(255, 255, 255);
+}
+
+.user-state-non-login a:hover {
+    text-decoration: none;
+    color: rgb(255, 255, 182);
 }
 
 .logout-btn {
@@ -100,6 +110,10 @@ body {
 .category-area a {
     text-decoration: none;
     color: rgb(255, 255, 255);
+}
+
+.category-area a:hover {
+    color: rgb(255, 255, 182);
 }
 
 .genre {

@@ -11,7 +11,7 @@ html {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    width: 900px;
+    width: 80%;
     margin-left: auto;
     margin-right: auto;
     margin-top: 20px;
@@ -38,13 +38,17 @@ html {
 
 .user-state-login a {
     text-decoration: none;
+    color: rgb(207 205 205);
+}
+
+.user-state-login a:hover {
     color: rgb(0, 0, 0);
 }
 
 .user-state-non-login {
     display: flex;
     justify-content: space-between;
-    width: 120px;
+    min-width: 120px;
     font-size: 12px;
     font-weight: 700;
 }
@@ -52,6 +56,10 @@ html {
 .user-state-non-login a {
     text-decoration: none;
     font-size: 15px;
+    color: rgb(207 205 205);
+}
+
+.user-state-non-login a:hover {
     color: rgb(0, 0, 0);
 }
 
@@ -66,7 +74,8 @@ html {
 .category-area {
     display: flex;
     justify-content: center;
-    width: 700px;
+    width: 80%;
+    min-width: 700px;
     margin-left: auto;
     margin-right: auto;
     padding: 10px 0;
@@ -78,6 +87,10 @@ html {
 
 .category-area a {
     text-decoration: none;
+    color: rgb(207 205 205);
+}
+
+.category-area a:hover {
     color: rgb(0, 0, 0);
 }
 
@@ -87,7 +100,8 @@ html {
 }
 
 .bottom-line {
-    width: 700px;
+    width: 80%;
+    min-width: 700px;
     border-bottom: 3px solid black;
     margin-top: 5px;
     margin-left: auto;
