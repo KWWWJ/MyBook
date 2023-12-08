@@ -13,16 +13,21 @@
 </head>
 
 <body>
+    <img class="background" src="images/home/main_top.png">
     <div id="home-area">
+        <img class="logo" src="/images/home/main_logo.png">
         <div class="title">
-            <img class="logo" src="/images/home/main_logo.png">
-            <div class="user-state-non-login" th:if="${session.userId == null}">
-                <a href="/login">로그인</a>
-                <a href="/regist">회원가입</a>
+            <div class="user-state-non-login" th:if="${session.userName == null}">
+                <a href="/regist">로그인 · 회원가입</a>
             </div>
-            <div class="user-state-login" th:if="${session.userId != null}">
-                <a href="/user/user.html" th:text="${session.userId}"></a>
+            <div class="user-state-login" th:if="${session.userName != null}">
+                <a href="/user/user.html" th:text="${session.userName}"></a>
                 <div>님 환영합니다.</div>
+            </div>
+            <div class="user-state-logout" th:if="${session.userName != null}">
+                <form id="logout-form" action="/logout" method="get">
+                    <button class="logout-btn">로그아웃</button>
+                </form>
             </div>
         </div>
         <div class="category">
@@ -58,145 +63,28 @@
                 </button>
                 <button class="carousel-control-next" type="button" data-bs-target="#event" data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="false"></span>
-                    <span class="visually-hidden">Next</span>
+                    <span class=" visually-hidden">Next</span>
                 </button>
             </div>
         </div>
-        <div class="midle-area">
-            <div class="main_tit01">
-                <img src="images/home/card/card1.png" alt="Card 1">
-            </div>
-            <div class="main_tit02">
-                <img src="images/home/card/card2.png" alt="Card 2">
-            </div>
-            <div class="main_tit03">
-                <img src="images/home/card/card3.png" alt="Card 3">
-            </div>
-            <div id="fixedContainer">
-
-                <div class="scrollableContent">
-                </div>
-            </div>
-
+    </div>
+    <div class="scroll-area">
+        <div class="scroll-area-background"></div>
+        <div class="main_tit01">
+            <img src="images/home/card/card1.png" alt="Card 1">
         </div>
-        <div class="bottom-area">
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-
+        <div class="main_tit02">
+            <img src="images/home/card/card2.png" alt="Card 2">
         </div>
+        <div class="main_tit03">
+            <img src="images/home/card/card3.png" alt="Card 3">
+        </div>
+        <div id="fixedContainer">
+
+            <div class="scrollableContent">
+            </div>
+        </div>
+
     </div>
     <div class="footer">
         <div class="line-bold-double">

@@ -6,7 +6,29 @@
 
 <body>
     <div th:fragment="bookFragment">
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <link rel="stylesheet" href="styles/book/book.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+        <div id="book-area">
+            <div class="book-img-description-area">
+                <div id="book-cover"></div>
+                <div class="book-description-box">
+                    <img class="img-size" src="images/book/up.jpg">
+                    <div id="book-description"></div>
+                    <img class="img-size" src="images/book/down.jpg">
+                </div>
 
+            </div>
+            <div class="book-info-area">
+                <div id="book-info"></div>
+            </div>
+            <div class="book-review-area">
+                <div id="book-review"></div>
+            </div>
+        </div>
+        <script src="/scripts/book/book.js"></script>
     </div>
 </body>
 

@@ -13,13 +13,17 @@
                 <div class="logo" onclick="location.href='/home'">
                     <img src="/images/index/logo.png">
                 </div>
-                <div class="user-state-non-login" th:if="${session.userId == null}">
-                    <a href="/login">로그인</a>
-                    <a href="/regist">회원가입</a>
+                <div class="user-state-non-login" th:if="${session.userName == null}">
+                    <a href="/regist">로그인 · 회원가입</a>
                 </div>
-                <div class="user-state-login" th:if="${session.userId != null}">
-                    <a href="/user/user.html" th:text="${session.userId}"></a>
+                <div class="user-state-login" th:if="${session.userName != null}">
+                    <a href="/user/user.html" th:text="${session.userName}"></a>
                     <div>님 환영합니다.</div>
+                </div>
+                <div class="user-state-logout" th:if="${session.userName != null}">
+                    <form id="logout-form" action="/logout" method="get">
+                        <button class="logout-btn">로그아웃</button>
+                    </form>
                 </div>
             </div>
             <div class="category">

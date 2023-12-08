@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Controller
@@ -52,25 +51,27 @@ public class IndexController {
 		return "index/layout.html";
 	}
 	
-	@GetMapping("/login")
-	public String loginPage(Model model) {
-		model.addAttribute("menu", "user/login");
-		model.addAttribute("menuHead", "loginFragment");
-		return "index/layout.html";
-	}
 	
-	@GetMapping("/regist")
-	public String registPage(Model model) {
-		model.addAttribute("menu", "user/regist");
-		model.addAttribute("menuHead", "registFragment");
-		return "index/layout.html";
-	}
 	
 	@ResponseBody
 	@GetMapping("getBestseller")
 	public String bestseller(@RequestParam(name = "page", required = false) Integer page) {
 		
 		return getBestseller(page);
+	}
+	
+	@ResponseBody
+	@GetMapping("getbook")
+	public String bookId(@RequestParam(name = "bookId", required = false) String bookId) {
+		System.out.println("book id : "+bookId);
+		return getBook(bookId);
+	}
+	
+	@ResponseBody
+	@GetMapping("getbookCI")
+	public String bookIdCI(@RequestParam(name = "bookIdCI", required = false) String bookId) {
+		System.out.println("book id : "+bookId);
+		return getBookCI(bookId);
 	}
 	
 	
@@ -106,7 +107,7 @@ public class IndexController {
 	        return Bestseller;
 	}
 	
-	public String getBook(Long bookId) {
+	public String getBook(String bookId) {
 		 URI aladinUri = UriComponentsBuilder
 	                .fromUriString("http://www.aladin.co.kr")
 	                .path("/ttb/api/ItemLookUp.aspx")
@@ -134,12 +135,40 @@ public class IndexController {
 	        return Bestseller;
 	}
 	
+	public String getBookCI(String bookId) {
+		 URI aladinUri = UriComponentsBuilder
+	                .fromUriString("http://www.aladin.co.kr")
+	                .path("/ttb/api/ItemLookUp.aspx")
+	                .queryParam("ttbkey","ttbbrilliantpop1102001")
+	                .queryParam("ItemIdType","ISBN")
+	                .queryParam("ItemId",bookId)
+	                .queryParam("output","js")
+	                .queryParam("Cover","Big")
+	                .queryParam("Version",20131101)
+	                .encode(Charset.forName("UTF-8"))
+	                .encode()
+	                .build()
+	                .toUri();
+	 
+	        RequestEntity<Void> req = (RequestEntity<Void>) RequestEntity
+	                .get(aladinUri)
+	                .build();
+	 
+	        log.info("uri : {}",aladinUri);
+	 
+	        RestTemplate restTemplate = new RestTemplate();
+	        ResponseEntity<String> result = restTemplate.exchange(req, String.class);
+	        String Bestseller = result.getBody();
+	        
+	        return Bestseller;
+	}
+	
 	public String searchBookTitle(String title) {
 		 URI aladinUri = UriComponentsBuilder
 				 .fromUriString("http://www.aladin.co.kr")
 	                .path("/ttb/api/ItemSearch.aspx")
 	                .queryParam("ttbkey","ttbbrilliantpop1102001")
-	                .queryParam("Query","aladdin")
+	                .queryParam("Query",title)
 	                .queryParam("QueryType","Title")
 	                .queryParam("MaxResults",50)
 	                .queryParam("start",1)

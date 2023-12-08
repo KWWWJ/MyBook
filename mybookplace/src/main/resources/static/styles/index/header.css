@@ -1,12 +1,21 @@
 @charset "UTF-8";
 
+body,
+html {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 #header-area {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    width: 950px;
+    width: 900px;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 20px;
+    padding: 0 10px;
 }
 
 .top {
@@ -24,6 +33,7 @@
 
 .user-state-login {
     display: flex;
+    padding-top: 1px;
 }
 
 .user-state-login a {
@@ -34,14 +44,23 @@
 .user-state-non-login {
     display: flex;
     justify-content: space-between;
-    width: 100px;
+    width: 120px;
     font-size: 12px;
     font-weight: 700;
 }
 
 .user-state-non-login a {
     text-decoration: none;
+    font-size: 15px;
     color: rgb(0, 0, 0);
+}
+
+.logout-btn {
+    border: none;
+    background: black;
+    color: white;
+    font-size: 12px;
+    margin-left: 10px;
 }
 
 .category-area {
@@ -74,4 +93,10 @@
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 30px;
+}
+
+.wrapper {
+    overflow-y: hidden;
+    overflow-x: hidden;
+    width: 100%;
 }

@@ -1,0 +1,56 @@
+@charset "UTF-8";
+
+#book-area {
+    position: relative;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.book-img-description-area {
+    display: flex;
+    width: 700px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    border-bottom: 1px solid #e3e1e1;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+#book-cover {
+    margin-right: 10px;
+}
+
+#book-cover img {
+    border: 1px solid black;
+}
+
+.book-description-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 500px;
+}
+
+#book-description {
+    font-family: 'Gowun Dodum', sans-serif;
+    font-weight: 600;
+}
+
+.img-size {
+    width: 13px;
+}
+
+.book-info-area {
+    width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    background: #f7f7f7;
+    border: 1px solid #dcd9d9;
+    border-radius: 25px;
+    padding: 10px;
+    font-size: 14px;
+}
