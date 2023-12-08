@@ -30,14 +30,14 @@ public class ApiController {
 	@ResponseBody
 	@GetMapping("getbook")
 	public String bookId(@RequestParam(name = "bookId", required = false) String bookId) {
-		System.out.println("book id : "+bookId);
+
 		return getBook(bookId);
 	}
 	
 	@ResponseBody
 	@GetMapping("getbookCI")
 	public String bookIdCI(@RequestParam(name = "bookIdCI", required = false) String bookId) {
-		System.out.println("book id : "+bookId);
+
 		return getBookCI(bookId);
 	}
 	
@@ -46,13 +46,19 @@ public class ApiController {
 	public String bookPage(@RequestParam(name = "page", required = false) int page,
 			@RequestParam(name = "category", required = false) String category,
 			Model model) {
-		System.out.println("page: "+page+", menu : "+ category);
 		
 		
 		return getBookList(category, page);
 	}
 	
-	
+	@ResponseBody
+	@GetMapping("getGenreList")
+	public String genrePage(@RequestParam(name = "page", required = false) int page,
+			@RequestParam(name = "categoryId", required = false) String categoryId,
+			Model model) {
+		
+		return getBookGenre(categoryId, page);
+	}
 	
 	
 	public String getBestseller(int start) {
@@ -151,6 +157,37 @@ public class ApiController {
 	                .queryParam("ItemIdType","ISBN")
 	                .queryParam("ItemId",bookId)
 	                .queryParam("output","js")
+	                .queryParam("Cover","Big")
+	                .queryParam("Version",20131101)
+	                .encode(Charset.forName("UTF-8"))
+	                .encode()
+	                .build()
+	                .toUri();
+	 
+	        RequestEntity<Void> req = (RequestEntity<Void>) RequestEntity
+	                .get(aladinUri)
+	                .build();
+	 
+	        log.info("uri : {}",aladinUri);
+	 
+	        RestTemplate restTemplate = new RestTemplate();
+	        ResponseEntity<String> result = restTemplate.exchange(req, String.class);
+	        String Bestseller = result.getBody();
+	        
+	        return Bestseller;
+	}
+	
+	public String getBookGenre(String cId, int page) {
+		 URI aladinUri = UriComponentsBuilder
+	                .fromUriString("http://www.aladin.co.kr")
+	                .path("/ttb/api/ItemList.aspx")
+	                .queryParam("ttbkey","ttbbrilliantpop1102001")
+	                .queryParam("QueryType","Bestseller")
+	                .queryParam("MaxResults",10)
+	                .queryParam("start",page)
+	                .queryParam("CategoryId",cId)
+	                .queryParam("output","js")
+	                .queryParam("SearchTarget","Book")
 	                .queryParam("Cover","Big")
 	                .queryParam("Version",20131101)
 	                .encode(Charset.forName("UTF-8"))

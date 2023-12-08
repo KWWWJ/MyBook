@@ -24,6 +24,7 @@
 #book-list img {
     width: 120px;
     cursor: pointer;
+    border: 1px solid rgb(206, 206, 206);
 }
 
 .book-info {
@@ -33,4 +34,89 @@
 .pagenation-box {
     display: flex;
     justify-content: center;
+}
+
+.open-category {
+    text-align: center;
+    font-size: 25px;
+    padding: 10px 50px;
+    border: 1px solid #d0cccc;
+    width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
+    cursor: pointer;
+}
+
+.open-category:hover {
+    background: rgb(255, 67, 67);
+    color: white;
+}
+
+#category-list {
+    position: relative;
+    display: flex;
+    border: 1px solid #cdcdcd;
+    padding: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    flex-wrap: wrap;
+    flex-direction: row;
+    height: 480px;
+    width: 950px;
+    z-index: 0;
+}
+
+
+.main-category {
+    position: relative;
+    cursor: pointer;
+    text-align: center;
+    padding: 10px 0;
+    width: 160px;
+    height: 65px;
+    font-weight: 900;
+}
+
+.main-category:hover {
+    cursor: default;
+    background: rgb(194, 194, 194);
+}
+
+#category-list li {
+    display: none;
+    cursor: pointer;
+    list-style: none;
+    margin-right: 10px;
+    color: rgb(0, 0, 0);
+    z-index: 3;
+    padding: 5px;
+    border-bottom: 1px solid rgb(235, 235, 235);
+}
+
+#category-list li.on {
+    display: block;
+}
+
+#category-list li:hover {
+    background: rgb(179, 179, 179);
+}
+
+.sub-category {
+    display: none;
+    position: absolute;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    max-height: 600px;
+    width: 230px;
+    border: 1px solid black;
+    padding: 10px;
+    top: 40px;
+    background: white;
+    z-index: 2;
+    overflow: auto;
+}
+
+.category-name {
+    padding: 30px 0;
 }
