@@ -9,9 +9,40 @@
 <body>
     <div th:fragment="reviewListFragment">
         <link rel="stylesheet" href="styles/review/reviewList.css">
+        <div id="revew-list-area">
+            <div class="page-logo">
+                <img class="review-logo" src="images/review/review-logo.png">
+            </div>
+            <div class="review-list-box">
+                <div class="review-category"></div>
+                <div id="review-list" th:each="item : ${reviewList}">
+                    <li th:text="${item}"></li>
+                </div>
+            </div>
+            <!-- <div class="pagenation-box">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li th:each="page : ${#numbers.sequence(1, 20)}" class="page-item">
+                            <a class="page-link"
+                                th:href="@{review(page=${page}, category=${param.category})}">[[${page}]]</a>
+                        </li>
 
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div> -->
+        </div>
+        <script src="/scripts/review/reviewList.js"></script>
     </div>
-
 </body>
 
 </html>

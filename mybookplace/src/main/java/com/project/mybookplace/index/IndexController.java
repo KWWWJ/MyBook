@@ -34,13 +34,5 @@ public class IndexController {
 		return "index/layout.html";
 	}
 	
-	@GetMapping("/review")
-	public String reviewPage(@RequestParam(name = "page", required = false) Integer page, Model model) {
-		model.addAttribute("menu", "review/reviewList");
-		model.addAttribute("menuHead", "reviewListFragment");
-		return "index/layout.html";
-	}
-	
-	
 
 }

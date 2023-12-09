@@ -1,6 +1,7 @@
 const bookListArea = document.getElementById('book-list');
 const categoryListArea = document.getElementById('category-list');
 const openCategory = document.getElementById('open-category');
+const categoryNameBox = document.getElementById('category-name');
 
 axios.get('json/category.json')
     .then(function (response) {
@@ -32,8 +33,8 @@ axios.get('json/category.json')
                         boxDivElem.append(sudCategoriesLiElem);
 
                         sudCategoriesLiElem.addEventListener('click', function () {
-                            location.href = 'genre?page=1&categoryid=' + item.CID;
-                            document.getElementsByClassName('category-name')[0].innerHTML = item.category;
+                            location.href = 'genre?page=1&categoryid=' + item.CID + '&categoryname=' + item.category;
+
                         })
 
                         categoryDivElem.addEventListener('mouseover', function () {
@@ -59,7 +60,6 @@ axios.get('json/category.json')
                             boxDivElem.addEventListener('mouseout', function () {
                                 sudCategoriesLiElem.style.display = 'none';
                                 boxDivElem.style.display = 'none';
-                                console.log("a");
                             })
                         }
                         subCategoryDivElem.append(boxDivElem);
@@ -79,7 +79,7 @@ axios.get('json/category.json')
         console.log(error);
     })
 
-const getBookList = async (page, category, categoryId) => {
+const getBookList = async (page, category, categoryId, categoryName) => {
     if (categoryId == null) {
         const bookListData = (await axios.get('getBookList', { params: { page, category } })).data.item;
         return bookListData;
@@ -101,12 +101,15 @@ function setBookList() {
     const urlSearchParams = new URLSearchParams(new URL(currentUrl).search);
     const page = urlSearchParams.get('page');
     const category = urlSearchParams.get('category');
+    const categoryName = urlSearchParams.get('categoryname');
     let categoryId = null;
     if (category == null) {
         categoryId = urlSearchParams.get('categoryid');
     }
-    const bookList = getBookList(page, category, categoryId);
+    const bookList = getBookList(page, category, categoryId, categoryName);
     let count = 0;
+
+    categoryNameBox.innerHTML = categoryName;
 
     bookList.then(item => {
 
