@@ -62,4 +62,8 @@ public class UserService {
 	public List<User> seaechAll(){
 		return userDAO.getAll();
 	}
+	
+	public User getUser(String userName) {
+		return userDAO.get(userName);
+	}
 }

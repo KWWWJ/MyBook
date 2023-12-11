@@ -1,0 +1,61 @@
+@charset "UTF-8";
+
+#write-area {
+    width: 950px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.write-box {
+    border: 1px solid rgb(0, 0, 0);
+    padding: 30px 20px;
+}
+
+.teaxarea-size {
+    width: 940px;
+    border: none;
+    resize: none;
+    padding-top: 10px;
+
+}
+
+.teaxarea-size:focus {
+    outline: none;
+
+}
+
+.title {
+    height: 40px;
+    width: 100%;
+    padding-top: 13px;
+    border-bottom: 2px solid rgb(224, 224, 224);
+}
+
+.book-name {
+    height: 40px;
+    width: 100%;
+    padding-top: 13px;
+    border-bottom: 2px solid rgb(224, 224, 224);
+}
+
+.content {
+    min-height: 700px;
+    width: 100%
+}
+
+.upload-btn {
+    display: block;
+    background: none;
+    margin-left: auto;
+    border-radius: 10px;
+    font-size: 20px;
+    padding: 10px;
+    width: 130px;
+    margin-top: 10px;
+    margin-bottom: 40px;
+}
+
+.upload-btn:hover {
+    background: black;
+    color: white;
+}

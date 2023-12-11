@@ -79,7 +79,7 @@ axios.get('json/category.json')
         console.log(error);
     })
 
-const getBookList = async (page, category, categoryId, categoryName) => {
+const getBookList = async (page, category, categoryId) => {
     if (categoryId == null) {
         const bookListData = (await axios.get('getBookList', { params: { page, category } })).data.item;
         return bookListData;
@@ -106,7 +106,7 @@ function setBookList() {
     if (category == null) {
         categoryId = urlSearchParams.get('categoryid');
     }
-    const bookList = getBookList(page, category, categoryId, categoryName);
+    const bookList = getBookList(page, category, categoryId);
     let count = 0;
 
     categoryNameBox.innerHTML = categoryName;

@@ -13,7 +13,8 @@ public class Review {
 	private int id;
 	private int userId;
 	private Long bookId;
-	private int genreId;
+	private String bookName;
+	private String genre;
 	private String title;
 	private String content;
 	private int likes;

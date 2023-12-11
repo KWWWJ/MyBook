@@ -44,17 +44,21 @@ body {
     width: 300px;
 }
 
+.user-logind {
+    display: flex;
+    align-items: baseline;
+}
+
 .user-state-login {
     display: flex;
-    font-size: 15px;
+    font-size: 12px;
     color: rgb(255, 255, 255);
-    padding-top: 1px;
 
 }
 
 .user-state-login a {
     text-decoration: none;
-    font-size: 15px;
+    font-size: 12px;
     color: rgb(255, 255, 255);
 }
 
@@ -67,7 +71,7 @@ body {
     display: flex;
     justify-content: space-between;
     width: 120px;
-    font-size: 15px;
+    font-size: 12px;
     font-weight: 700;
 }
 

@@ -52,10 +52,15 @@ public class UserDAO {
 	}
 	
 	public User get(String userId) {
-		return jdbcTemplate.queryForObject(
-				"select * from users where user_id=?", 
-				mapper, userId
-			);
+		try {
+			return jdbcTemplate.queryForObject(
+					"select * from users where name=?", 
+					mapper, userId
+				);
+		}catch(Exception e) {
+			
+		}
+		return null;
 	}
 	
 	

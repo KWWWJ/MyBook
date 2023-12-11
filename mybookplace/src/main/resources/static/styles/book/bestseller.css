@@ -7,6 +7,7 @@
     margin-left: auto;
     margin-right: auto;
     overflow: hidden;
+    min-width: 950px;
 }
 
 #bestseller-list {

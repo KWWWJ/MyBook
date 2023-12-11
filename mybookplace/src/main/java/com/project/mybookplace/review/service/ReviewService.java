@@ -18,17 +18,14 @@ public class ReviewService {
 		reviewDAO.add(review);
 	}
 	
-	public List<Review> getReviewAll(String order) {
-		return reviewDAO.getAll(order);
+	// 모든 리뷰 가져오는 메서드
+	public List<Review> getReviewAll(int page, String order) {
+		return reviewDAO.getAll(page, order);
 	}
 	
-	public List<Review> getGenre(int genreId, String order){
-		return reviewDAO.getGenre(genreId, order);
-	}
-	
-	//좋아요 순으로 가져오는 메서드.
-	public List<Review> getLikes(){
-		return reviewDAO.getLikes();
+	// 장르별로 가져오는 메서드
+	public List<Review> getGenre(int start, String genre, String order){
+		return reviewDAO.getGenre(start, genre, order);
 	}
 	
 	//특정 유저의 모든 리뷰를 가져오는 메서드.
@@ -37,8 +34,8 @@ public class ReviewService {
 	}
 	
 	//책의 ISBN번호로 가저오는 메서드.
-	public List<Review> getBookReiews(Long bookId, String order){
-		return reviewDAO.getBookReview(bookId, order);
+	public List<Review> getBookReiews(int start, Long bookId, String order){
+		return reviewDAO.getBookReview(start, bookId, order);
 	}
 	
 	//특정 글을 수정.
@@ -50,4 +47,23 @@ public class ReviewService {
 	public void banR(Review review) {
 		reviewDAO.edit(review);
 	}
+	
+	public int page(int showReviewCount) {
+		int page = (reviewDAO.getCount()/showReviewCount);
+		if(!(reviewDAO.getCount()%showReviewCount == 0)) {
+			page = page+ 1;
+		}
+		
+		return page;
+	}
+	
+	public int showPageNumber(int nowPage, int showCount) {
+		int pageGroup = (nowPage/5) + 1;
+		
+		int showPage = (pageGroup-1) * showCount + 1;
+				
+		return showPage;
+	}
+	
+	
 }

@@ -1,0 +1,41 @@
+<html lang="ko">
+
+<head th:fragment="writeFragmentHead">
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <div th:fragment="writeFragment">
+        <link rel="stylesheet" href="styles/review/write.css">
+        <div id="write-area">
+            <form id="write-form" action="/add" method="get">
+                <div class="write-box">
+                    <fieldset>
+                        <div class="form-floating">
+                            <textarea type="text" name="title" class="teaxarea-size title" placeholder="제목을 입력해주세요."
+                                rows="3"></textarea>
+                            <div class="form-floating mb-3"></div>
+                        </div>
+                        <div class="form-floating">
+                            <textarea type="search" name="book-name" class="teaxarea-size book-name"
+                                placeholder="책의 제목을 입력해주세요." rows="3"></textarea>
+                            <div class="form-floating mb-3"></div>
+                        </div>
+                        <div class="form-floating">
+                            <textarea type="text" name="content" class="teaxarea-size content" id="write-content"
+                                placeholder="내용을 입력해주세요." onkeyup="autoResize(this)" onkeydown="autoResize(this)"
+                                rows="3"></textarea>
+                            <div class="form-floating mb-3"></div>
+                        </div>
+                        <input type="hidden" name="book-id" value="1000000000000">
+                        <input type="hidden" name="genre" value="가정/요리/뷰티">
+                    </fieldset>
+                </div>
+                <button class="upload-btn">upload</button>
+            </form>
+        </div>
+        <script src="/scripts/review/write.js"></script>
+    </div>
+</body>
+
+</html>

@@ -12,34 +12,61 @@
         <div id="revew-list-area">
             <div class="page-logo">
                 <img class="review-logo" src="images/review/review-logo.png">
+                <button class="write-brn" onclick="location.href='/write'">
             </div>
-            <div class="review-list-box">
-                <div class="review-category"></div>
-                <div id="review-list" th:each="item : ${reviewList}">
-                    <li th:text="${item}"></li>
+            <div class="review-list">
+                <div class="review-category">
+                    <div class="review-category-box">
+                        <a class="order-id" href="review?page=1&order=id&genre=기본">전체 등록순</a>
+                        <a class="order-likes" href="review?page=1&order=like&genre=기본">전체 인기순</a>
+                        <div class="category-line">⚫</div>
+                        <div id="genre-order"></div>
+                    </div>
                 </div>
+                <div class="review-list-box">
+                    <div class="order-box">
+                        <a class="order-id-list" th:href="@{review(page=1, order=id, genre=${param.genre})}">등록순</a>
+                        <div>&nbsp;⚫&nbsp;</div>
+                        <a class="order-likes-list"
+                            th:href="@{review(page=1, order=likes, genre=${param.genre})}">인기순</a>
+                    </div>
+                    <div class="review-box" th:each="item : ${reviewList}">
+                        <div class="review-title" th:text="${item.title}"></div>
+                        <div class="book-name" th:text="${item.bookName}" th:onclick="goBook([[${item.bookId}]])"></div>
+                        <li class="review-user" th:text="${item.userName}"></li>
+                        <div class="likes-box">
+                            <img class="haert-img" src="images/review/haert.png">
+                            <div class="review-likes" th:text="${item.likes}"></div>
+                        </div>
+                    </div>
+                    <div class="non-data" th:if="${reviewList} == null">
+                        <p>리뷰가 존재하지 않습니다.</p>
+                    </div>
+                </div>
+
             </div>
-            <!-- <div class="pagenation-box">
+            <div class="pagenation-box">
                 <nav aria-label="Page navigation example">
                     <ul class="pagination">
-                        <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Previous">
+                        <li class="page-item" th:if="${nowPage} > 1">
+                            <a class="page-link" th:href="@{review(page=${nowPage-1}, order=${param.order})}"
+                                aria-label="Previous">
                                 <span aria-hidden="true">&laquo;</span>
                             </a>
                         </li>
-                        <li th:each="page : ${#numbers.sequence(1, 20)}" class="page-item">
-                            <a class="page-link"
-                                th:href="@{review(page=${page}, category=${param.category})}">[[${page}]]</a>
+                        <li th:each="page : ${#numbers.sequence(startPage, pageLength)}" class="page-item">
+                            <a class="page-link" th:href="@{review(page=${page}, order=${param.order})}">[[${page}]]</a>
                         </li>
 
-                        <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Next">
+                        <li class="page-item" th:if="${nowPage} != ${pageLength}">
+                            <a class="page-link" th:href="@{review(page=${nowPage}+1, order=${param.order})}"
+                                aria-label="Next">
                                 <span aria-hidden="true">&raquo;</span>
                             </a>
                         </li>
                     </ul>
                 </nav>
-            </div> -->
+            </div>
         </div>
         <script src="/scripts/review/reviewList.js"></script>
     </div>
