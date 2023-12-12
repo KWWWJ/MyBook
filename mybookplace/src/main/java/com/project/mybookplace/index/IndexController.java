@@ -31,6 +31,18 @@ public class IndexController {
 	public String genrePage(@RequestParam(name = "page", required = false) Integer page, Model model) {
 		model.addAttribute("menu", "menu/bookList");
 		model.addAttribute("menuHead", "bookListFragment");
+		model.addAttribute("nowPage", page);
+		
+		int newPage = page/5;
+		
+		if(newPage == 0) {
+			newPage = 1;
+		}
+		
+		int startPage = (newPage - 1) * 5 + 1;
+		
+		model.addAttribute("startPage", startPage);
+		
 		return "index/layout.html";
 	}
 	

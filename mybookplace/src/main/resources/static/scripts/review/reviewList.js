@@ -20,15 +20,20 @@ likesBox.forEach(element => {
 
 function goBook(id) {
     id = id.toString();
-    console.log('id length : ' + id.length);
     bookLink.forEach(elem => {
         if (id.length == 13) {
-            console.log('id test : up');
             location.href = 'book?bookid=' + id;
         } else {
-            console.log('id test : down');
             location.href = 'book?bookidci=' + id;
         }
+    })
+}
+
+function goReview(id) {
+    id = id.toString();
+    bookLink.forEach(elem => {
+        console.log("id : " + id)
+        location.href = 'read?id=' + id;
     })
 }
 

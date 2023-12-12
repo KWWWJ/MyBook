@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head th:fragment="readFragmentHead">
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <div th:fragment="readFragment">
+        <link rel="stylesheet" href="styles/review/read.css">
+        <div id="read-area">
+            <div class="category-box">
+                <a class="order-id" href="review?page=1&order=id&genre=기본">전체 등록순</a>
+                <a class="order-likes" href="review?page=1&order=likes&genre=기본">전체 인기순</a>
+                <div class="category-line">⚫</div>
+                <div id="genre-order"></div>
+            </div>
+            <div class="read-box">
+                <div class="user-box">
+                    <div class="read-title" th:text="${reviewData.title}"></div>
+                    <div class="read-user-name" th:text="${reviewData.userName}"></div>
+                </div>
+                <div class="read-book-name" th:text="${reviewData.bookName}"></div>
+                <div class="read-content" th:utext="${reviewData.content}"></div>
+                <div class="likes-box">
+                    <div class="read-likes" th:text="${likes}"></div>
+                    <img th:if="${userLikes}" class="haert-img" src="images/review/red-haert.png">
+                    <img th:unless="${userLikes}" class="haert-img" src="images/review/haert.png">
+                </div>
+            </div>
+        </div>
+        <script src="/scripts/review/read.js"></script>
+    </div>
+</body>
+
+</html>

@@ -44,8 +44,7 @@ public class ApiController {
 	@ResponseBody
 	@GetMapping("getBookList")
 	public String bookPage(@RequestParam(name = "page", required = false) int page,
-			@RequestParam(name = "category", required = false) String category,
-			Model model) {
+			@RequestParam(name = "category", required = false) String category) {
 		
 		
 		return getBookList(category, page);
@@ -54,10 +53,17 @@ public class ApiController {
 	@ResponseBody
 	@GetMapping("getGenreList")
 	public String genrePage(@RequestParam(name = "page", required = false) int page,
-			@RequestParam(name = "categoryId", required = false) String categoryId,
-			Model model) {
+			@RequestParam(name = "categoryId", required = false) String categoryId) {
 		
 		return getBookGenre(categoryId, page);
+	}
+	
+	// 책 제목이나 작가로 검색해서 그 책 정보를 다시 보내주는 메서드 필요.
+	@ResponseBody
+	@GetMapping("/searchBook")
+	public String searchBook(@RequestParam(name = "bookTitle", required = false) String bookTitle) {
+		
+		return searchBookTitle(bookTitle);
 	}
 	
 	
@@ -218,8 +224,8 @@ public class ApiController {
 	                .queryParam("MaxResults",50)
 	                .queryParam("start",1)
 	                .queryParam("SearchTarget","Book")
-	                .queryParam("Cover","Big")
 	                .queryParam("output","js")
+	                .queryParam("Cover","Big")
 	                .queryParam("Version",20131101)
 	                .encode(Charset.forName("UTF-8"))
 	                .encode()

@@ -55,6 +55,7 @@ public class UserController {
 			
 			if(user != null) {
 				session.setAttribute("userName", user.getName());
+				session.setAttribute("userId", user.getId());
 			}
 			
 		}catch(Exception e) {
@@ -68,6 +69,7 @@ public class UserController {
 	public String logout(HttpSession session) {
 		
 		session.setAttribute("userName", null);
+		session.setAttribute("userId", null);
 		
 		return "redirect:/home";
 	}

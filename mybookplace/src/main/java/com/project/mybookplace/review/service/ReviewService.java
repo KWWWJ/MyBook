@@ -18,6 +18,10 @@ public class ReviewService {
 		reviewDAO.add(review);
 	}
 	
+	public Review getReview(int id) {
+		return reviewDAO.get(id);
+	}
+	
 	// 모든 리뷰 가져오는 메서드
 	public List<Review> getReviewAll(int page, String order) {
 		return reviewDAO.getAll(page, order);
@@ -39,13 +43,19 @@ public class ReviewService {
 	}
 	
 	//특정 글을 수정.
+	public void likes(Review review, int likes) {
+		review.setLikes(review.getLikes()+likes);
+		reviewDAO.likesCount(review);
+	}
+	
+	//특정 글을 수정.
 	public void edit(Review review) {
 		reviewDAO.edit(review);
 	}
 	
 	//특정 글을 숨김.
 	public void banR(Review review) {
-		reviewDAO.edit(review);
+		reviewDAO.ban(review);
 	}
 	
 	public int page(int showReviewCount) {

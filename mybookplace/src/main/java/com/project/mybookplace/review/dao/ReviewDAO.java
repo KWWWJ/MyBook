@@ -29,7 +29,7 @@ public class ReviewDAO {
 					rs.getString("genre"),
 					rs.getString("title"),
 					rs.getString("content"),
-					rs.getInt("likes"),
+					rs.getInt("review_likes"),
 					rs.getInt("is_ban") == 1,
 					rs.getTimestamp("created_at"),
 					rs.getString("user_name")
@@ -45,22 +45,25 @@ public class ReviewDAO {
 				review.getBookName(),
 				review.getGenre(),
 				review.getTitle(),
-				review.getContent());
+				review.getContent()
+				);
 	}
 	
 	public void edit(Review review) { 
-		jdbcTemplate.update("update reviews book_id=?, book_name=?, genre=?, title=?, content=? set where id=?",
+		jdbcTemplate.update("update reviews set book_id=?, book_name=?, genre=?, title=?, content=? where id=?",
 				review.getBookId(),
 				review.getBookName(),
 				review.getGenre(),
 				review.getTitle(),
-				review.getContent());
+				review.getContent(),
+				review.getId()
+				);
 	}
 	
 	
 	public Review get(int id) {
 		return jdbcTemplate.queryForObject(
-				"select * from reviews where id=?", 
+				"select a.*, b.name as user_name from reviews a join users b on a.user_id=b.id where a.id=?", 
 				mapper, id
 			);
 	}
@@ -98,8 +101,16 @@ public class ReviewDAO {
 	}
 	
 	public void ban(Review review) { 
-		jdbcTemplate.update("update reviews is_ban=? set where id=?",
-				review.isBan() ? 1:0
+		jdbcTemplate.update("update reviews set is_ban=? where id=?",
+				review.isBan() ? 1:0,
+				review.getId()
+						);
+	}
+	
+	public void likesCount(Review review) { 
+		jdbcTemplate.update("update reviews set review_likes=? where id=?",
+				review.getLikes(),
+				review.getId()
 						);
 	}
 	

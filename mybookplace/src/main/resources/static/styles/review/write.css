@@ -7,6 +7,7 @@
 }
 
 .write-box {
+    position: relative;
     border: 1px solid rgb(0, 0, 0);
     padding: 30px 20px;
 }
@@ -58,4 +59,49 @@
 .upload-btn:hover {
     background: black;
     color: white;
+}
+
+#search-book-area {
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    height: 500px;
+    width: 910px;
+    overflow: auto;
+    top: 130px;
+    border: 1px solid rgb(202, 202, 202);
+    background-color: rgb(255, 255, 255);
+}
+
+#search-book-area::-webkit-scrollbar {
+    width: 8px;
+}
+
+#search-book-area::-webkit-scrollbar-thumb {
+    height: 30%;
+    background: gray;
+    border-radius: 10px;
+}
+
+#search-book-area::-webkit-scrollbar-track {
+    background: white;
+}
+
+#search-book-area img {
+    width: 80px;
+}
+
+#search-book-area li {
+    cursor: pointer;
+    display: flex;
+    list-style: none;
+    padding: 10px;
+}
+
+#search-book-area li:hover {
+    background-color: rgb(196, 196, 196);
+}
+
+#search-book-area p {
+    font-size: 13px;
 }

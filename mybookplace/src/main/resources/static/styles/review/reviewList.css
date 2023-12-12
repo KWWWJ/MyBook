@@ -10,7 +10,7 @@
 }
 
 .review-logo {
-    width: 100%;
+    width: 90%;
 }
 
 .write-brn {
@@ -92,11 +92,6 @@
     margin-bottom: 10px;
 }
 
-.review-list-box {
-    display: flex;
-
-}
-
 .order-box {
     display: flex;
     flex-direction: row-reverse;
@@ -121,7 +116,7 @@
     display: flex;
     flex-direction: column;
     width: 700px;
-    margin-left: auto;
+    margin-left: 30px;
     margin-right: auto;
     padding: 20px 0;
 }
@@ -142,7 +137,7 @@
 }
 
 .book-name {
-    font-size: 15px;
+    font-size: 13px;
     cursor: pointer;
     width: fit-content;
     white-space: nowrap;

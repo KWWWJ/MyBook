@@ -3,6 +3,7 @@ const bookDescription = document.getElementById('book-description');
 const bookInfo = document.getElementById('book-info');
 const bookReview = document.getElementById('book-review');
 const bestsellerTable = document.getElementById('bestseller-table');
+const bookTitle = document.getElementsByClassName('book-title');
 
 const getbook = async (bookId) => {
     let bookData = null;
@@ -32,7 +33,9 @@ function setBook() {
             bookImgElem.src = book.cover;
             bookCover.append(bookImgElem);
             bookDescription.innerHTML = book.description;
-            bookInfo.innerHTML = "작가 : " + book.author
+            bookTitle[0].innerHTML = book.title
+            bookInfo.innerHTML = "제목 : " + book.title
+                + "<br/>" + "작가 : " + book.author
                 + "<br/>" + "출판사 : " + book.publisher
                 + "<br/>" + "출행일 : " + book.pubDate;
         });

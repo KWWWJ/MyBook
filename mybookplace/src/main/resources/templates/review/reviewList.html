@@ -18,7 +18,7 @@
                 <div class="review-category">
                     <div class="review-category-box">
                         <a class="order-id" href="review?page=1&order=id&genre=기본">전체 등록순</a>
-                        <a class="order-likes" href="review?page=1&order=like&genre=기본">전체 인기순</a>
+                        <a class="order-likes" href="review?page=1&order=review_likes&genre=기본">전체 인기순</a>
                         <div class="category-line">⚫</div>
                         <div id="genre-order"></div>
                     </div>
@@ -28,10 +28,10 @@
                         <a class="order-id-list" th:href="@{review(page=1, order=id, genre=${param.genre})}">등록순</a>
                         <div>&nbsp;⚫&nbsp;</div>
                         <a class="order-likes-list"
-                            th:href="@{review(page=1, order=likes, genre=${param.genre})}">인기순</a>
+                            th:href="@{review(page=1, order=review_likes, genre=${param.genre})}">인기순</a>
                     </div>
                     <div class="review-box" th:each="item : ${reviewList}">
-                        <div class="review-title" th:text="${item.title}"></div>
+                        <div class="review-title" th:text="${item.title}" th:onclick="goReview([[${item.id}]])"></div>
                         <div class="book-name" th:text="${item.bookName}" th:onclick="goBook([[${item.bookId}]])"></div>
                         <li class="review-user" th:text="${item.userName}"></li>
                         <div class="likes-box">
