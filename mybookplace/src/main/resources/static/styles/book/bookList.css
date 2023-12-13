@@ -36,18 +36,45 @@
     flex-direction: column;
     align-content: center;
     flex-wrap: wrap;
-    max-width: 700px;
+    max-width: 400px;
 }
 
 .category-font {
     text-align: center;
-    font-size: 25px;
-    padding: 10px 50px;
+    font-size: 17px;
+    font-weight: 700;
     border: 1px solid #d0cccc;
     margin-left: auto;
     margin-right: auto;
     cursor: pointer;
-    width: 700px;
+    width: 100%;
+}
+
+.order-box {
+    display: flex;
+    margin-left: auto;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+}
+
+.order-btn-recently {
+    cursor: pointer;
+    width: 100px;
+    height: 20px;
+    font-size: 15px;
+    text-align: center;
+    color: rgb(209, 209, 209);
+}
+
+.order-btn-bestseller {
+    cursor: pointer;
+    width: 100px;
+    height: 20px;
+    font-size: 15px;
+    text-align: center;
+    color: rgb(209, 209, 209);
 }
 
 #category-list {

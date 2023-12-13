@@ -9,7 +9,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.project.mybookplace.likes.domain.Likes;
 import com.project.mybookplace.likes.service.LikesService;
 import com.project.mybookplace.review.domain.Review;
@@ -36,8 +39,7 @@ public class ReviewController {
 			Model model) {
 		
 		// 페이지 헤더와 내용 HTML 불러오기
-		model.addAttribute("menu", "review/reviewList");
-		model.addAttribute("menuHead", "reviewListFragment");
+		getPage(model, "review/reviewList", "reviewListFragment");
 		
 		// 페이지 마다 10개의 리뷰를 가져오도록 시작점 설정
 		int start = (page-1)*10;
@@ -53,8 +55,6 @@ public class ReviewController {
 				model.addAttribute("reviewList", likesCount(reviewService.getGenre(start, genre, order)));
 			}
 		}
-		
-		
 		// 페이지 수 보내주기(value는 한 페이지에 표시될 리뷰의 수)
 		model.addAttribute("pageLength", reviewService.page(10));
 		
@@ -72,7 +72,6 @@ public class ReviewController {
 		List<Review> tempList = list;
 		for(int i=0; i<tempList.size(); i++) {
 			tempList.get(i).setLikes(likesService.likesCount(tempList.get(i).getId()));
-			System.out.println("likes : "+tempList.get(i).getLikes());
 		}
 		return tempList;
 	}
@@ -80,17 +79,15 @@ public class ReviewController {
 	// 리뷰 작성하기
 	@GetMapping("/write")
 	public String write(Model model){
-		model.addAttribute("menu", "review/write");
-		model.addAttribute("menuHead", "writeFragment");
+		getPage(model, "review/write", "writeFragment");
 		
 		return "index/layout.html";
 	}
 	
 	// 리뷰 보기
 	@GetMapping("/read")
-	public String read(@RequestParam(name = "id") Integer id, Model model, HttpSession session){
-		model.addAttribute("menu", "review/read");
-		model.addAttribute("menuHead", "readFragment");
+	public String read(@RequestParam(name = "id", required=false) Integer id, Model model, HttpSession session){
+		getPage(model, "review/read", "readFragment");
 
 		Review tempReview = reviewService.getReview(id);
 		
@@ -109,24 +106,12 @@ public class ReviewController {
 			}
 		}
 		
-		
-		
-		
 		return "index/layout.html";
 	}
 	
-	// book 페이지에 리뷰 보내주기
-	@GetMapping("/bookReviewList")
-	public String BookReviewList(@RequestParam(name = "bookId", required = false) Long bookId,
-			@RequestParam(name = "order", required = false) String order, Model model){
-		if(reviewService.getBookReiews(1, bookId, order) != null) {
-			model.addAttribute("reviewList", reviewService.getBookReiews(1, bookId, order));
-		}
-		return "redirect:/review";
-	}
 	
 	@GetMapping("/likes")
-	public String likesCount(@RequestParam(name = "id") Integer id,
+	public String likesCount(@RequestParam(name = "id", required=false) Integer id,
 			HttpSession session) {
 		Review tempReview = reviewService.getReview(id);
 		
@@ -167,16 +152,47 @@ public class ReviewController {
 		
 		tempReview.setTitle(data.get("title"));
 		tempReview.setBookName(data.get("book-name"));
-		tempReview.setBookId(Long.parseLong(data.get("book-id")));
+		if(data.get("book-id").length() == 13) {
+			tempReview.setBookId(Long.parseLong(data.get("book-id")));
+		} else {
+			tempReview.setBookCid(data.get("book-id"));
+		}
 		tempReview.setGenre(data.get("genre"));
 		tempReview.setUserName((String)session.getAttribute("userName"));
 		
 		User tempUser = userService.getUser(tempReview.getUserName());
 		
 		tempReview.setUserId(tempUser.getId());
+		tempReview.setContent(data.get("content"));
+		
 		
 		reviewService.writeReview(tempReview);
 		
 		return "redirect:/home";
+	}
+	
+	private void getPage(Model model, String html, String fragment) {
+		model.addAttribute("menu", html);
+		model.addAttribute("menuHead", fragment);
+	}
+	
+	// 책에 대한 리뷰 보내주기
+	@ResponseBody
+	@GetMapping("bookReviewList")
+	public String reviewList(@RequestParam(name = "bookId", required=false) Long bookId) throws JsonProcessingException {
+		List<Review> reviews = reviewService.getBookReiewsId(0, bookId, "review_likes");
+		ObjectMapper objectMapper = new ObjectMapper();
+		String jsonReviews = objectMapper.writeValueAsString(reviews);
+		System.out.println(jsonReviews);
+		return jsonReviews;
+	}
+	
+	@ResponseBody
+	@GetMapping("bookReviewListCI")
+	public String reviewListCi(@RequestParam(name = "bookCid", required=false) String bookCid) throws JsonProcessingException {
+		List<Review> reviews = reviewService.getBookReiewsCid(0, bookCid, "review_likes");
+		ObjectMapper objectMapper = new ObjectMapper();
+		String jsonReviews = objectMapper.writeValueAsString(reviews);
+		return jsonReviews;
 	}
 }

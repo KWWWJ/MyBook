@@ -134,6 +134,30 @@ body {
     margin-bottom: 30px;
 }
 
+.search-box {
+    width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.search-box input {
+    width: 200px;
+    height: 30px;
+    border: 1px solid black;
+    border-radius: 3cqmin;
+    float: right;
+    margin-bottom: 20px;
+    background-image: url('/images/index/search.png');
+    background-repeat: no-repeat;
+    background-position: 95%;
+    background-size: 20px;
+    padding: 10px;
+}
+
+.search-box input:focus {
+    border: none;
+}
+
 .top-area {
     width: 700px;
     margin-left: auto;

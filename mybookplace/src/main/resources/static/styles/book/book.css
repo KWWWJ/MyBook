@@ -55,9 +55,31 @@
     width: 700px;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 30px;
     background: #f7f7f7;
     border: 1px solid #dcd9d9;
     border-radius: 25px;
     padding: 10px;
     font-size: 14px;
+}
+
+#book-review {
+    width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.review-div {
+    font-size: 13px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgb(211, 211, 211);
+}
+
+.review-title {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 20px;
+    font-weight: 700;
 }

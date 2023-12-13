@@ -123,3 +123,17 @@ html {
     overflow-x: hidden;
     width: 100%;
 }
+
+.search-box input {
+    width: 200px;
+    height: 30px;
+    border: 1px solid black;
+    border-radius: 3cqmin;
+    float: right;
+    margin-bottom: 20px;
+    background-image: url('/images/index/search.png');
+    background-repeat: no-repeat;
+    background-position: 95%;
+    background-size: 20px;
+    padding: 10px;
+}

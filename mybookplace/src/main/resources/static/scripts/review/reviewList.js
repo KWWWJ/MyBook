@@ -18,13 +18,14 @@ likesBox.forEach(element => {
     })
 });
 
-function goBook(id) {
+function goBook(id, cid) {
     id = id.toString();
+    console.log(id);
     bookLink.forEach(elem => {
         if (id.length == 13) {
             location.href = 'book?bookid=' + id;
         } else {
-            location.href = 'book?bookidci=' + id;
+            location.href = 'book?bookidci=' + cid;
         }
     })
 }

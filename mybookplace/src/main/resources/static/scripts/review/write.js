@@ -12,25 +12,24 @@ function autoResize(textarea) {
 let inputBookName = null;
 
 function searchOn() {
-    bookTitle[0].addEventListener('keydown', function (e) {
-        // writeArea.onsubmit = (e) => {
-        //     e.preventDefault();
-        // }
-        if (e.keyCode == 13) {
-            searchArea.style.display = 'flex';
-            inputBookName = document.getElementById('book-title').value;
-            setSearchData();
-            e.preventDefault();
-            e.stopPropagation();
-        }
-    })
+    bookTitle[0].addEventListener('keydown', (e) => keydownEvent(e))
+}
+
+function keydownEvent(e) {
+    if (e.keyCode == 13 || e.key == 'Enter') {
+        searchArea.style.display = 'flex';
+        inputBookName = document.getElementById('book-title').value;
+        setSearchData();
+        e.preventDefault();
+        e.stopPropagation();
+    }
 }
 
 searchOn();
 
 
-const getSearchData = async (bookTitle) => {
-    const searchData = (await axios.get("searchBook", { params: { bookTitle } })).data.item;
+const getSearchData = async (search) => {
+    const searchData = (await axios.get("getBookTitle", { params: { search } })).data.item;
     return searchData;
 }
 function getCategoey(cid) {

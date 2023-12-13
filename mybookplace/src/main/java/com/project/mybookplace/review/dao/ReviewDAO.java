@@ -25,6 +25,7 @@ public class ReviewDAO {
 					rs.getInt("id"),
 					rs.getInt("user_id"),
 					rs.getLong("book_id"),
+					rs.getString("book_cid"),
 					rs.getString("book_name"),
 					rs.getString("genre"),
 					rs.getString("title"),
@@ -39,9 +40,10 @@ public class ReviewDAO {
 	};
 	
 	public void add(Review review) { 
-		jdbcTemplate.update("insert into reviews ( user_id, book_id, book_name, genre, title, content ) values ( ?, ?, ?, ?, ?, ?)",
+		jdbcTemplate.update("insert into reviews ( user_id, book_id, book_cid, book_name, genre, title, content ) values ( ?, ?, ?, ?, ?, ?, ? )",
 				review.getUserId(),
 				review.getBookId(),
+				review.getBookCid(),
 				review.getBookName(),
 				review.getGenre(),
 				review.getTitle(),
@@ -50,8 +52,9 @@ public class ReviewDAO {
 	}
 	
 	public void edit(Review review) { 
-		jdbcTemplate.update("update reviews set book_id=?, book_name=?, genre=?, title=?, content=? where id=?",
+		jdbcTemplate.update("update reviews set book_id=?, book_cid=?, book_name=?, genre=?, title=?, content=? where id=?",
 				review.getBookId(),
+				review.getBookCid(),
 				review.getBookName(),
 				review.getGenre(),
 				review.getTitle(),
@@ -77,10 +80,18 @@ public class ReviewDAO {
 		
 	}
 
-	public List<Review> getBookReview(int start, Long bookId, String order){
+	public List<Review> getBookReviewId(int start, Long bookId, String order){
 		return jdbcTemplate.query("select a.*, b.name as user_name from reviews a join users b on a.user_id=b.id where a.book_id=? order by a."+order+" desc limit ?, 10",
 				mapper,
 				bookId,
+				start
+				);
+	}
+	
+	public List<Review> getBookReviewCid(int start, String bookCid, String order){
+		return jdbcTemplate.query("select a.*, b.name as user_name from reviews a join users b on a.user_id=b.id where a.book_cid=? order by a."+order+" desc limit ?, 10",
+				mapper,
+				bookCid,
 				start
 				);
 	}

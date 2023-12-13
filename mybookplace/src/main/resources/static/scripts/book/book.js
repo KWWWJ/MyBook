@@ -4,27 +4,26 @@ const bookInfo = document.getElementById('book-info');
 const bookReview = document.getElementById('book-review');
 const bestsellerTable = document.getElementById('bestseller-table');
 const bookTitle = document.getElementsByClassName('book-title');
+const reviewList = document.getElementById('book-review');
+const currentUrl = window.location.href;
+const urlSearchParams = new URLSearchParams(new URL(currentUrl).search);
+let bookId = urlSearchParams.get('bookid');
 
-const getbook = async (bookId) => {
+let bookCid = urlSearchParams.get('bookidci');
+
+
+const getBook = async (bookId, bookCid) => {
     let bookData = null;
-    if (bookId.length === 13) {
+    if (bookId != null) {
         bookData = (await axios.get("getbook", { params: { bookId } })).data.item;
     } else {
-        const bookIdCI = bookId;
-        bookData = (await axios.get("getbookCI", { params: { bookIdCI } })).data.item;
+        bookData = (await axios.get("getbookCI", { params: { bookCid } })).data.item;
     }
     return bookData;
 }
 
 function setBook() {
-    const currentUrl = window.location.href;
-    const urlSearchParams = new URLSearchParams(new URL(currentUrl).search);
-    let bookId = urlSearchParams.get('bookid');
-    if (bookId == null) {
-        bookId = urlSearchParams.get('bookidci');
-    }
-
-    const book = getbook(bookId);
+    const book = getBook(bookId, bookCid);
 
     book.then(item => {
 
@@ -43,3 +42,36 @@ function setBook() {
 }
 
 setBook();
+
+const getReview = async (bookId, bookCid) => {
+    let reviewData = null;
+    if (bookId != null) {
+        reviewData = (await axios.get("bookReviewList", { params: { bookId } })).data;
+    } else {
+        reviewData = (await axios.get("bookReviewListCI", { params: { bookCid } })).data;
+    }
+    console.log(reviewData)
+    return reviewData;
+}
+
+function setReview() {
+    const review = getReview(bookId, bookCid);
+    console.log(review)
+    review.then(item => {
+        item.forEach(review => {
+            const reviewAteaDivElem = document.createElement('div');
+            const reviewPElem = document.createElement('p');
+
+            reviewPElem.innerHTML = review.userName
+                + "<br/>" + review.title + review.likes;
+            reviewAteaDivElem.append(reviewPElem);
+            bookReview.append(reviewAteaDivElem);
+            reviewAteaDivElem.className = 'review-div';
+            reviewAteaDivElem.addEventListener('click', function () {
+                location.href = 'read?id=' + review.id;
+            })
+        })
+    })
+}
+
+setReview();

@@ -2,6 +2,15 @@ const bookListArea = document.getElementById('book-list');
 const categoryListArea = document.getElementById('category-list');
 const openCategory = document.getElementById('open-category');
 const categoryNameBox = document.getElementById('category-name');
+const orderBtnRrcently = document.getElementsByClassName('order-btn-recently');
+const orderBtnBestseller = document.getElementsByClassName('order-btn-bestseller');
+
+const currentUrl = window.location.href;
+const urlSearchParams = new URLSearchParams(new URL(currentUrl).search);
+const page = urlSearchParams.get('page');
+const order = urlSearchParams.get('order');
+const category = urlSearchParams.get('category');
+const categoryName = urlSearchParams.get('categoryname');
 
 axios.get('json/category.json')
     .then(function (response) {
@@ -25,7 +34,7 @@ axios.get('json/category.json')
                 mainCategoryDivElem.append(categoryDivElem);
 
                 categoryDivElem.addEventListener('click', function () {
-                    location.href = 'genre?page=1&categoryid=' + element.CID + '&categoryname=' + element.category;
+                    location.href = 'genre?page=1&order=' + order + '&categoryid=' + element.CID + '&categoryname=' + element.category;
                 })
             }
         })
@@ -37,12 +46,12 @@ axios.get('json/category.json')
         console.log(error);
     })
 
-const getBookList = async (page, category, categoryId) => {
+const getBookList = async (page, category, categoryId, order) => {
     if (categoryId == null) {
         const bookListData = (await axios.get('getBookList', { params: { page, category } })).data.item;
         return bookListData;
     } else {
-        const bookListData = (await axios.get('getGenreList', { params: { page, categoryId } })).data.item;
+        const bookListData = (await axios.get('getGenreList', { params: { page, order, categoryId } })).data.item;
         return bookListData;
     }
 }
@@ -55,19 +64,39 @@ openCategory.addEventListener('mouseout', function () {
 })
 
 function setBookList() {
-    const currentUrl = window.location.href;
-    const urlSearchParams = new URLSearchParams(new URL(currentUrl).search);
-    const page = urlSearchParams.get('page');
-    const category = urlSearchParams.get('category');
-    const categoryName = urlSearchParams.get('categoryname');
     let categoryId = null;
     if (category == null) {
         categoryId = urlSearchParams.get('categoryid');
     }
-    const bookList = getBookList(page, category, categoryId);
+    if (categoryName == "신간도서" && order == "Bestseller") {
+        categoryNameBox.innerHTML = "베스트셀러"
+    } else {
+        categoryNameBox.innerHTML = categoryName;
+    }
+    if (order == "ItemNewAll") {
+        const bookList = getBookList(page, category, categoryId, order);
+        bookListCreate(bookList);
+        orderBtnRrcently[0].style.color = 'black';
+        orderBtnBestseller[0].style.color = 'rgb(209, 209, 209)';
+    } else {
+        const bookList = getBookList(page, category, categoryId, order);
+        bookListCreate(bookList);
+        orderBtnBestseller[0].style.color = 'black';
+        orderBtnRrcently[0].style.color = 'rgb(209, 209, 209)';
+    }
 
-    categoryNameBox.innerHTML = categoryName;
+    orderBtnRrcently[0].addEventListener('click', function () {
+        location.href = 'genre?page=1&order=ItemNewAll&categoryid=' + categoryId + '&categoryname=' + categoryName;
+    })
 
+    orderBtnBestseller[0].addEventListener('click', function () {
+        location.href = 'genre?page=1&&order=Bestseller&categoryid=' + categoryId + '&categoryname=' + categoryName;
+    })
+
+
+}
+
+function bookListCreate(bookList) {
     bookList.then(item => {
 
         item.forEach(book => {

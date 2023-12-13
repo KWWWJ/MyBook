@@ -37,9 +37,14 @@ public class ReviewService {
 		return reviewDAO.getUserReview(user.getId(), order);
 	}
 	
-	//책의 ISBN번호로 가저오는 메서드.
-	public List<Review> getBookReiews(int start, Long bookId, String order){
-		return reviewDAO.getBookReview(start, bookId, order);
+	//책의 ISBN13번호로 가저오는 메서드.
+	public List<Review> getBookReiewsId(int start, Long bookId, String order){
+		return reviewDAO.getBookReviewId(start, bookId, order);
+	}
+	
+	//책의 ISBN13번호로 가저오는 메서드.
+	public List<Review> getBookReiewsCid(int start, String bookCid, String order){
+		return reviewDAO.getBookReviewCid(start, bookCid, order);
 	}
 	
 	//특정 글을 수정.

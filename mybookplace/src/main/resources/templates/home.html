@@ -35,10 +35,13 @@
         <div class="category">
             <div class="category-area">
                 <a href="/bestseller?page=1">베스트셀러</a>
-                <a href="/genre?page=1&category=ItemNewAll" class="genre">장르별</a>
+                <a href="/genre?page=1&order=Bestseller&category=ItemNewAll&categoryname=신간도서" class="genre">장르별</a>
                 <a href="/review?page=1&order=id&genre=기본">리뷰</a>
             </div>
             <div class="bottom-line"></div>
+            <div class="search-box">
+                <input id="search-text">
+            </div>
         </div>
         <div class="top-area">
             <div id="event" class="carousel slide" data-bs-ride="carousel">
@@ -110,6 +113,7 @@
         </div>
     </div>
     <script src="scripts/home/home.js"></script>
+    <script src="scripts/public/search.js"></script>
 </body>
 
 </html>
