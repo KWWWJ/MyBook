@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -36,10 +37,20 @@ public class ReviewController {
 	public String reviewPage(@RequestParam(name = "page", required = false) Integer page,
 			@RequestParam(name = "order", required = false) String order,
 			@RequestParam(name = "genre", required = false) String genre,
-			Model model) {
+			Model model, HttpSession session) {
 		
 		// 페이지 헤더와 내용 HTML 불러오기
 		getPage(model, "review/reviewList", "reviewListFragment");
+		
+		User user = null;
+		
+		if(session.getAttribute("userId") != null) {
+			user = userService.getUser((Integer)session.getAttribute("userId"));
+			model.addAttribute("admin", user.isAdmin());
+		} else {
+			model.addAttribute("admin", null);
+		}
+		
 		
 		// 페이지 마다 10개의 리뷰를 가져오도록 시작점 설정
 		int start = (page-1)*10;
@@ -72,6 +83,7 @@ public class ReviewController {
 		List<Review> tempList = list;
 		for(int i=0; i<tempList.size(); i++) {
 			tempList.get(i).setLikes(likesService.likesCount(tempList.get(i).getId()));
+			reviewService.likes(tempList.get(i), tempList.get(i).getLikes());
 		}
 		return tempList;
 	}
@@ -91,30 +103,49 @@ public class ReviewController {
 
 		Review tempReview = reviewService.getReview(id);
 		
-		tempReview.setContent(tempReview.getContent().replace("\n", "<br>"));
-		
-		model.addAttribute("reviewData", tempReview);
-		model.addAttribute("likes", likesService.likesCount(id));
-		
 		List<Likes> tempLikes = likesService.getAll(id);
 		
+		int userId = 0;
+		
+		User tempUser = new User();
+		
+		if(session.getAttribute("userId") != null) {
+			userId = (Integer)session.getAttribute("userId");
+			tempUser = userService.getUser(userId);
+			model.addAttribute("admin", tempUser.isAdmin());
+		} else {
+			model.addAttribute("admin", null);
+		}
+		
+		// 리뷰가 밴일 때 관리자가 아닌 다른 유저들은 볼 수 없음
+		if(tempReview.isBan() == true && tempUser.isAdmin() == false) {
+			tempReview.setTitle("가려진 리뷰.");
+			tempReview.setContent("이 리뷰는 관리자에 의해 가려졌습니다.");
+		} 
+		
 		for(int i=0; i<tempLikes.size(); i++) {
-			if(tempLikes.get(i).getUserId() == (Integer)session.getAttribute("userId")) {
+			if(tempLikes.get(i).getUserId() == userId) {
 				model.addAttribute("userLikes", true);
 			} else {
 				model.addAttribute("userLikes", false);
 			}
 		}
 		
+		tempReview.setContent(tempReview.getContent().replace("\n", "<br>"));
+		
+		model.addAttribute("reviewData", tempReview);
+		model.addAttribute("likes", likesService.likesCount(id));
+		
+		
 		return "index/layout.html";
 	}
+	
+	
 	
 	
 	@GetMapping("/likes")
 	public String likesCount(@RequestParam(name = "id", required=false) Integer id,
 			HttpSession session) {
-		Review tempReview = reviewService.getReview(id);
-		
 		User tempUser = userService.getUser((String)session.getAttribute("userName"));
 		
 		// 조회시 likesService.getAll의 리스트가 비어있는 것을 잘못 가져왔을 경우 처리
@@ -125,7 +156,7 @@ public class ReviewController {
 			tempLikes.setReviewId(id);
 			tempLikes.setLikes(true);
 			
-			// likes가 하나도 없으면 조회가 불가능하기 때문에 모든 리뷰의 최초 1회는 그냥 생성한다.
+			// likes가 하나도 없으면 조회가 불가능하기 때문에 모든 리뷰의 최초 1회는 생성한다.
 			if(likesService.getAll(id).isEmpty()) {
 				likesService.like(tempLikes);
 			} else {
@@ -183,7 +214,6 @@ public class ReviewController {
 		List<Review> reviews = reviewService.getBookReiewsId(0, bookId, "review_likes");
 		ObjectMapper objectMapper = new ObjectMapper();
 		String jsonReviews = objectMapper.writeValueAsString(reviews);
-		System.out.println(jsonReviews);
 		return jsonReviews;
 	}
 	
@@ -195,4 +225,7 @@ public class ReviewController {
 		String jsonReviews = objectMapper.writeValueAsString(reviews);
 		return jsonReviews;
 	}
+	
+	
+	
 }

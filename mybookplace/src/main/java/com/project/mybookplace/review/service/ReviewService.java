@@ -27,14 +27,19 @@ public class ReviewService {
 		return reviewDAO.getAll(page, order);
 	}
 	
+	// 특정 유저의 밴된 리뷰를 불러오는 메서드
+	public List<Review> getBanAll(int userId) {
+		return reviewDAO.getBanAll(userId);
+	}
+	
 	// 장르별로 가져오는 메서드
 	public List<Review> getGenre(int start, String genre, String order){
 		return reviewDAO.getGenre(start, genre, order);
 	}
 	
 	//특정 유저의 모든 리뷰를 가져오는 메서드.
-	public List<Review> getUserReviews(User user, String order){
-		return reviewDAO.getUserReview(user.getId(), order);
+	public List<Review> getUserReviews(int userId, String order){
+		return reviewDAO.getUserReview(userId, order);
 	}
 	
 	//책의 ISBN13번호로 가저오는 메서드.
@@ -49,7 +54,7 @@ public class ReviewService {
 	
 	//특정 글을 수정.
 	public void likes(Review review, int likes) {
-		review.setLikes(review.getLikes()+likes);
+		review.setLikes(likes);
 		reviewDAO.likesCount(review);
 	}
 	

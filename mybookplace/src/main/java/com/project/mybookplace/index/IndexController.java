@@ -4,17 +4,38 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.project.mybookplace.review.domain.Review;
 import com.project.mybookplace.review.service.ReviewService;
+import com.project.mybookplace.user.domain.User;
+import com.project.mybookplace.user.service.UserService;
+
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class IndexController {
 	@Autowired
 	ReviewService reviewService;
+	@Autowired
+	UserService userService;
 	
 	@GetMapping("/home")
-	public String home(Model model) {
+	public String home(Model model, HttpSession session) {
+		
+		User tempUser = new User();
+		int userId = 0;
+		
+		if(session.getAttribute("userId") != null) {
+			userId = (Integer)session.getAttribute("userId");
+			tempUser = userService.getUser(userId);
+			model.addAttribute("admin", tempUser.isAdmin());
+		} else {
+			model.addAttribute("admin", null);
+		}
+		
 		return "home.html";
 	}
 	
@@ -38,6 +59,12 @@ public class IndexController {
 		
 		pageCount(model, page);
 		
+		return "index/layout.html";
+	}
+	
+	@GetMapping("/upload")
+	public String upload(Model model) {
+		getPage(model, "admin/upload", "uploadFragment");
 		return "index/layout.html";
 	}
 	

@@ -63,7 +63,16 @@ public class UserService {
 		return userDAO.getAll();
 	}
 	
-	public User getUser(String userName) {
-		return userDAO.get(userName);
+	public List<User> seaechName(String name){
+		return userDAO.getNameAll(name);
 	}
+	
+	public User getUser(String userId) {
+		return userDAO.get(userId);
+	}
+	
+	public User getUser(int userId) {
+		return userDAO.get(userId);
+	}
+	
 }

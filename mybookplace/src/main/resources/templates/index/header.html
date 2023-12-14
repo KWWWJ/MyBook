@@ -21,7 +21,7 @@
                 </div>
                 <div class="user-logind" th:if="${session.userName != null}">
                     <div class="user-state-login">
-                        <a href="/user/user.html" th:text="${session.userName}"></a>
+                        <a href="user" th:text="${session.userName}"></a>
                         <div>님 환영합니다.</div>
                     </div>
                     <div class="user-state-logout">
@@ -44,6 +44,7 @@
             </div>
         </div>
         <script src="scripts/public/search.js"></script>
+        <script src="scripts/public/ban.js"></script>
     </div>
 </body>
 

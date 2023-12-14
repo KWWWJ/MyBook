@@ -7,7 +7,51 @@
 
 <body>
     <div th:fragment="userFragment">
-
+        <link rel="stylesheet" href="styles/user/user.css">
+        <div id="user-info-area">
+            <div class="user-info-top">
+                <div class="user-name">
+                    <p>Name :&nbsp;</p>
+                    <div th:text="${userInfo.name}"> </div>
+                </div>
+                <div class="user-id">
+                    <p>ID :&nbsp;</p>
+                    <div th:text="${userInfo.userId}"> </div>
+                </div>
+                <div class="user-email">
+                    <p>Email :&nbsp;</p>
+                    <div th:text="${userInfo.email}"> </div>
+                </div>
+            </div>
+            <div class="user-review-area">
+                <div class="review-bar">
+                    <div>My Review</div>
+                    <img src="images/review/pen.png">
+                    <div class="order">
+                        <p>등록순&nbsp;</p>
+                        <p class="point">⚫</p>
+                        <p>&nbsp;인기순</p>
+                    </div>
+                </div>
+                <div class="user-review-id" th:each="item : ${userReviewsId}">
+                    <div class="review-box">
+                        <div class="review-title" th:text="${item.title}" th:onclick="goReview([[${item.id}]])"></div>
+                        <div class="book-name" th:text="${item.bookName}"
+                            th:onclick="goBook([[${item.bookId}]],[[${item.bookCid}]])"></div>
+                    </div>
+                </div>
+                <div class="user-review-like" th:each="item : ${userReviewsLikes}">
+                    <div class="review-box">
+                        <div class="review-title" th:text="${item.title}" th:onclick="goReview([[${item.id}]])"></div>
+                        <div class="book-name" th:text="${item.bookName}"
+                            th:onclick="goBook([[${item.bookId}]],[[${item.bookCid}]])">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="/scripts/user/user.js"></script>
+        <script src="/scripts/public/go.js"></script>
     </div>
 </body>
 

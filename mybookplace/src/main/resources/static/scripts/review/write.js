@@ -1,13 +1,19 @@
 const writeArea = document.getElementById('write-area');
 const bookTitle = document.getElementsByClassName('book-name');
 const searchArea = document.getElementById('search-book-area');
+const au = document.getElementById('write-form');
 
 function autoResize(textarea) {
     textarea.style.height = 'auto';
     textarea.style.height = textarea.scrollHeight + 'px';
 }
+au.addEventListener('submit', function (e) {
+    if (document.getElementById('user-id').value == "") {
+        e.preventDefault();
+        alert("모든 정보를 기입해주세요.");
+    }
 
-
+})
 
 let inputBookName = null;
 

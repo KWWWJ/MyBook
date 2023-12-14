@@ -54,7 +54,7 @@ public class UserDAO {
 	public User get(String userId) {
 		try {
 			return jdbcTemplate.queryForObject(
-					"select * from users where name=?", 
+					"select * from users where user_id=?", 
 					mapper, userId
 				);
 		}catch(Exception e) {
@@ -66,6 +66,13 @@ public class UserDAO {
 	
 	public List<User> getAll(){
 		return jdbcTemplate.query("select * from users order by id", mapper);
+		
+	}
+	
+	public List<User> getNameAll(String name){
+		return jdbcTemplate.query("select * from users where name=? order by id", 
+				mapper,
+				name);
 		
 	}
 	

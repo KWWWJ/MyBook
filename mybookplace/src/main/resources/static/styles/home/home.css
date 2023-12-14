@@ -10,8 +10,6 @@ body {
     justify-content: center;
     flex-direction: column;
     width: 100%;
-    height: 600px;
-    background: black;
 }
 
 .background {
@@ -42,6 +40,7 @@ body {
     margin-left: auto;
     z-index: 1;
     width: 300px;
+    margin-top: 50px;
 }
 
 .user-logind {
@@ -52,19 +51,19 @@ body {
 .user-state-login {
     display: flex;
     font-size: 12px;
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
 
 }
 
 .user-state-login a {
     text-decoration: none;
     font-size: 12px;
-    color: rgb(255, 255, 255);
+    color: rgb(148, 148, 148);
 }
 
 .user-state-login a:hover {
     text-decoration: none;
-    color: rgb(255, 255, 182);
+    color: rgb(0, 0, 0);
 }
 
 .user-state-non-login {
@@ -77,20 +76,24 @@ body {
 
 .user-state-non-login a {
     text-decoration: none;
-    color: rgb(255, 255, 255);
+    color: rgbrgb(148, 148, 148);
 }
 
 .user-state-non-login a:hover {
     text-decoration: none;
-    color: rgb(255, 255, 182);
+    color: rgb(0, 0, 0);
 }
 
 .logout-btn {
     border: none;
-    background: black;
-    color: white;
+    background: white;
+    color: rgb(114, 114, 114);
     font-size: 12px;
     margin-left: 10px;
+}
+
+.logout-btn:hover {
+    color: rgb(0, 0, 0);
 }
 
 .category {
@@ -106,18 +109,18 @@ body {
     margin-right: auto;
     padding: 10px 0;
     margin-top: 30px;
-    border-top: 3px solid rgb(255, 255, 255);
-    border-bottom: 3px solid rgb(255, 255, 255);
+    border-top: 3px solid rgb(0, 0, 0);
+    border-bottom: 3px solid rgb(0, 0, 0);
     font-weight: 700;
 }
 
 .category-area a {
     text-decoration: none;
-    color: rgb(255, 255, 255);
+    color: rgb(161, 161, 161);
 }
 
 .category-area a:hover {
-    color: rgb(255, 255, 182);
+    color: rgb(0, 0, 0);
 }
 
 .genre {
@@ -127,11 +130,43 @@ body {
 
 .bottom-line {
     width: 700px;
-    border-bottom: 3px solid rgb(255, 255, 255);
+    border-bottom: 3px solid rgb(0, 0, 0);
     margin-top: 5px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 30px;
+}
+
+.admin-tools-box {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.user-search {
+    color: gray;
+    cursor: pointer;
+}
+
+.user-search:hover {
+    color: rgb(0, 0, 0);
+}
+
+.review-search {
+    color: gray;
+    cursor: pointer;
+}
+
+.review-search:hover {
+    color: rgb(0, 0, 0);
+}
+
+.admin-line {
+    width: 100%;
+    border-bottom: 1px solid black;
+    margin: 10px 0;
+
 }
 
 .search-box {
@@ -164,9 +199,16 @@ body {
     margin-right: auto;
 }
 
+.line-area {
+    margin: 30px 0;
+    width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    border-bottom: 1px solid black;
+}
+
 .scroll-area-background {
     position: absolute;
-    background-color: black;
     height: 500px;
     width: 100%;
 }
@@ -176,7 +218,6 @@ body {
     height: 500px;
     overflow: auto;
     z-index: 3;
-    /* fixedContainer의 z-index를 다른 요소보다 크게 설정 */
 }
 
 #fixedContainer::-webkit-scrollbar {
@@ -203,7 +244,7 @@ body {
 .main_tit03 img {
     position: absolute;
     z-index: 3;
-    max-width: 800px;
+    max-width: 700px;
     right: 50%;
     left: 50%;
     transform: translate(-50%);

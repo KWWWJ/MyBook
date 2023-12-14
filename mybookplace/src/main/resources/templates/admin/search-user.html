@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head th:fragment="searchUserFragmentHead">
+    <meta charset="UTF-8">
+
+</head>
+
+<body>
+    <div th:fragment="searchUserFragment">
+        <link rel="stylesheet" href="styles/admin/ban.css">
+        <div id="ban-area">
+            <input id="search-user" type="text" value="" placeholder="이름을 입력해주세요.">
+            <div class="list-title">search User</div>
+            <div id="user-list"></div>
+        </div>
+        <script src="/scripts/admin/search-user.js"></script>
+    </div>
+</body>
+
+</html>

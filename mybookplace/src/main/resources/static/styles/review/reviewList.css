@@ -206,3 +206,22 @@
 .pagination {
     justify-content: center;
 }
+
+.title-ban {
+    display: flex;
+    justify-content: space-between;
+}
+
+#ban-btn {
+    background: black;
+    cursor: pointer;
+    color: white;
+    width: 30px;
+    height: 20px;
+    font-size: 13px;
+    text-align: center;
+}
+
+#ban-btn:hover {
+    color: gray;
+}

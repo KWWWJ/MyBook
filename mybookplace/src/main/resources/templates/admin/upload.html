@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head th:fragment="uploadFragmentHead">
+    <meta charset="UTF-8">
+
+</head>
+
+<body>
+    <div th:fragment="uploadFragment">
+        <link rel="stylesheet" href="styles/admin/upload.css">
+        <div id="upload-area">
+            <div class="list-title">이벤트 사진 등록</div>
+            <div>
+                <form action="upload" method="POST" name="myPage-form" enctype="multipart/form-data">
+                    <input id="input-image" type="file" name="file">
+                    <input type="submit" value="등록">
+                </form>
+            </div>
+            <div class="list-title">추천도서 사진 등록</div>
+            <div>
+                <form action="upload" enctype="multipart/form-data" method="post">
+                    <input type="file" name="book-img1">
+                    <input type="file" name="book-img2">
+                    <input type="file" name="book-img3">
+                    <input type="hidden" name="delete" id="delete" value="0">
+                </form>
+            </div>
+        </div>
+        <script src="/scripts/admin/upload.js"></script>
+    </div>
+</body>
+
+</html>

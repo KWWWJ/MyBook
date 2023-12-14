@@ -73,15 +73,24 @@ public class ReviewDAO {
 	
 	// 페이지당 10개의 리뷰 출력, 시작지점 설정, 정렬 기준(최근순, 좋아요 순)
 	public List<Review> getAll(int start, String order){
-		return jdbcTemplate.query("select a.*, b.name as user_name from reviews a join users b on a.user_id=b.id order by a."+order+" desc limit ?, 10",
+		return jdbcTemplate.query("select a.*, b.name as user_name from reviews a join users b on a.user_id=b.id where a.is_ban=0 order by a."+order+" desc limit ?, 10",
 				mapper,
 				start
 				);
 		
 	}
+	
+	// 페이지당 10개의 리뷰 출력, 시작지점 설정, 정렬 기준(최근순, 좋아요 순)
+		public List<Review> getBanAll(int userId){
+			return jdbcTemplate.query("select a.*, b.name as user_name from reviews a join users b on a.user_id=b.id where a.user_id=? and a.is_ban=1 order by a.id desc",
+					mapper,
+					userId
+					);
+			
+		}
 
 	public List<Review> getBookReviewId(int start, Long bookId, String order){
-		return jdbcTemplate.query("select a.*, b.name as user_name from reviews a join users b on a.user_id=b.id where a.book_id=? order by a."+order+" desc limit ?, 10",
+		return jdbcTemplate.query("select a.*, b.name as user_name from reviews a join users b on a.user_id=b.id where a.book_id=? and a.is_ban=0 order by a."+order+" desc limit ?, 10",
 				mapper,
 				bookId,
 				start
@@ -89,7 +98,7 @@ public class ReviewDAO {
 	}
 	
 	public List<Review> getBookReviewCid(int start, String bookCid, String order){
-		return jdbcTemplate.query("select a.*, b.name as user_name from reviews a join users b on a.user_id=b.id where a.book_cid=? order by a."+order+" desc limit ?, 10",
+		return jdbcTemplate.query("select a.*, b.name as user_name from reviews a join users b on a.user_id=b.id where a.book_cid=? and a.is_ban=0 order by a."+order+" desc limit ?, 10",
 				mapper,
 				bookCid,
 				start
@@ -97,7 +106,7 @@ public class ReviewDAO {
 	}
 	
 	public List<Review> getGenre(int start, String genre, String order){
-		return jdbcTemplate.query("select a.*, b.name as user_name from reviews a join users b on a.user_id=b.id where a.genre=? order by a."+order+" desc limit ?, 10",
+		return jdbcTemplate.query("select a.*, b.name as user_name from reviews a join users b on a.user_id=b.id where a.genre=? and is_ban=0 order by a."+order+" desc limit ?, 10",
 				mapper,
 				genre,
 				start
@@ -105,7 +114,7 @@ public class ReviewDAO {
 	}
 	
 	public List<Review> getUserReview(int userId, String order){
-		return jdbcTemplate.query("select a.*, b.name as user_name from reviews a join users b on a.user_id=b.id where a.user_id=? order by a."+order,
+		return jdbcTemplate.query("select a.*, b.name as user_name from reviews a join users b on a.user_id=b.id where a.user_id=? and is_ban=0 order by a."+order+" desc",
 				mapper,
 				userId
 				);
@@ -126,7 +135,7 @@ public class ReviewDAO {
 	}
 	
 	public int getCount() {
-		return jdbcTemplate.queryForObject("select count(*) from reviews", Integer.class);
+		return jdbcTemplate.queryForObject("select count(*) from reviews where is_ban=0", Integer.class);
 	}
 	
 }

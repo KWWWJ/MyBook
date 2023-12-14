@@ -31,7 +31,11 @@
                             th:href="@{review(page=1, order=review_likes, genre=${param.genre})}">인기순</a>
                     </div>
                     <div class="review-box" th:each="item : ${reviewList}">
-                        <div class="review-title" th:text="${item.title}" th:onclick="goReview([[${item.id}]])"></div>
+                        <div class="title-ban">
+                            <div class="review-title" th:text="${item.title}" th:onclick="goReview([[${item.id}]])">
+                            </div>
+                            <div th:if="${admin}" id="ban-btn" th:onclick="reviewBan([[${item.id}]])">ban</div>
+                        </div>
                         <div class="book-name" th:text="${item.bookName}"
                             th:onclick="goBook([[${item.bookId}]],[[${item.bookCid}]])"></div>
                         <li class="review-user" th:text="${item.userName}"></li>
@@ -70,6 +74,7 @@
             </div>
         </div>
         <script src="/scripts/review/reviewList.js"></script>
+        <script src="/scripts/public/go.js"></script>
     </div>
 </body>
 

@@ -63,7 +63,7 @@ function setReview() {
             const reviewPElem = document.createElement('p');
 
             reviewPElem.innerHTML = review.userName
-                + "<br/>" + review.title + review.likes;
+                + "<br/>" + review.title;
             reviewAteaDivElem.append(reviewPElem);
             bookReview.append(reviewAteaDivElem);
             reviewAteaDivElem.className = 'review-div';
