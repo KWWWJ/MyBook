@@ -19,7 +19,12 @@
                 <div class="user-box">
                     <div class="read-title" th:text="${reviewData.title}"></div>
                     <div class="user-ban-box">
-                        <div class="read-user-name" th:text="${reviewData.userName}"></div>
+                        <div class="user-acount">
+                            <div class="read-user-name" th:text="${reviewData.userName}"></div>
+                            <div>
+                                <div th:text="'('+${reviewData.userAcountId}+')'"></div>
+                            </div>
+                        </div>
                         <div th:if="${admin}" id="user-ban" th:onclick="userBan([[${reviewData.userId}]])">ban</div>
                     </div>
 

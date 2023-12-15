@@ -68,6 +68,13 @@ public class UserController {
 			
 			User user = userService.login(tempUser);
 			
+			if(user == null) {
+				return "redirect:/regist";
+			}
+			
+			if(user.isBan() == true) {
+				return "redirect:/regist";
+			}
 			
 			if(user != null && user.isBan() == false) {
 				session.setAttribute("userName", user.getName());

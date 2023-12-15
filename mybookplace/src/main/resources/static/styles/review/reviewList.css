@@ -225,3 +225,8 @@
 #ban-btn:hover {
     color: gray;
 }
+
+.user-acount {
+    display: flex;
+    align-items: center;
+}

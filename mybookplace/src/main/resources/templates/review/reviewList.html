@@ -38,7 +38,10 @@
                         </div>
                         <div class="book-name" th:text="${item.bookName}"
                             th:onclick="goBook([[${item.bookId}]],[[${item.bookCid}]])"></div>
-                        <li class="review-user" th:text="${item.userName}"></li>
+                        <div class="user-acount">
+                            <div class="review-user" th:text="${item.userName}"></div>
+                            <div class="review-user" th:text="'('+${item.userAcountId}+')'"></div>
+                        </div>
                         <div class="likes-box">
                             <img class="haert-img" src="images/review/haert.png">
                             <div class="review-likes" th:text="${item.likes}"></div>

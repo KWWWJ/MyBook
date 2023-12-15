@@ -3,7 +3,7 @@ const searchUser = document.getElementById('search-user');
 
 const getUser = async (name) => {
     console.log(name)
-    const userList = (await axios.post("getUser", null, { params: { "name": name } })).data;
+    const userList = (await axios.post('getUser', null, { params: { 'name': name } })).data;
     console.log(userList)
     return userList;
 }
@@ -25,9 +25,26 @@ function setUser() {
         item.forEach(user => {
             const classDivElem = document.createElement('div');
             const listLiElem = document.createElement('li');
-            listLiElem.innerHTML = "Name : " + user.name + " | ID : " + user.id + " | Email : " + user.email + " | ban : " + user.ban;
+            const adminBtnElem = document.createElement('button');
+            const banBtnElem = document.createElement('button');
+
+            listLiElem.innerHTML = 'Name : ' + user.name + ' | ID : ' + user.id + ' | Email : ' + user.email + ' | admin : ' + user.admin + ' | ban : ' + user.ban;
+            adminBtnElem.innerHTML = 'admin';
+            adminBtnElem.className = 'admin-btn';
+            banBtnElem.innerHTML = 'ban';
+            banBtnElem.className = 'ban-btn';
+            classDivElem.className = 'user-info-box';
+
             classDivElem.append(listLiElem);
-            userListArea.append(classDivElem)
+            classDivElem.append(banBtnElem);
+            classDivElem.append(adminBtnElem);
+            userListArea.append(classDivElem);
+            adminBtnElem.addEventListener('click', function () {
+                userAdmin(user.id);
+            })
+            banBtnElem.addEventListener('click', function () {
+                userBan(user.id);
+            })
         });
     });
 }

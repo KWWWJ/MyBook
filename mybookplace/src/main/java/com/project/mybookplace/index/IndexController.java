@@ -1,14 +1,15 @@
 package com.project.mybookplace.index;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.project.mybookplace.review.domain.Review;
 import com.project.mybookplace.review.service.ReviewService;
 import com.project.mybookplace.user.domain.User;
 import com.project.mybookplace.user.service.UserService;
@@ -22,9 +23,15 @@ public class IndexController {
 	@Autowired
 	UserService userService;
 	
+	private static final String UPLOAD_EVENT_DIRECTORY = "src/main/resources/static/upload/event/";
+	private static final String UPLOAD_BOOK_DIRECTORY = "src/main/resources/static/upload/book/";
 	@GetMapping("/home")
 	public String home(Model model, HttpSession session) {
 		
+		List<String> eventImageFileNames = getEventImageFileNames();
+		List<String> bookImageFileNames = getBookImageFileNames();
+        model.addAttribute("eventImageFileNames", eventImageFileNames);
+        model.addAttribute("bookImageFileNames", bookImageFileNames);
 		User tempUser = new User();
 		int userId = 0;
 		
@@ -65,6 +72,12 @@ public class IndexController {
 	@GetMapping("/upload")
 	public String upload(Model model) {
 		getPage(model, "admin/upload", "uploadFragment");
+		
+		List<String> eventImageFileNames = getEventImageFileNames();
+		List<String> bookImageFileNames = getBookImageFileNames();
+        model.addAttribute("eventImageFileNames", eventImageFileNames);
+        model.addAttribute("bookImageFileNames", bookImageFileNames);
+		
 		return "index/layout.html";
 	}
 	
@@ -93,4 +106,36 @@ public class IndexController {
 		model.addAttribute("menu", html);
 		model.addAttribute("menuHead", fragment);
 	}
+	
+	 private List<String> getEventImageFileNames() {
+	        List<String> imageFileNames = new ArrayList();
+	        File uploadDirectory = new File(UPLOAD_EVENT_DIRECTORY);
+	        File[] files = uploadDirectory.listFiles();
+
+	        if (files != null) {
+	            for (File file : files) {
+	                if (file.isFile()) {
+	                    imageFileNames.add("upload/event/"+file.getName());
+	                }
+	            }
+	        }
+
+	        return imageFileNames;
+	    }
+	 
+	 private List<String> getBookImageFileNames() {
+	        List<String> imageFileNames = new ArrayList();
+	        File uploadDirectory = new File(UPLOAD_BOOK_DIRECTORY);
+	        File[] files = uploadDirectory.listFiles();
+
+	        if (files != null) {
+	            for (File file : files) {
+	                if (file.isFile()) {
+	                    imageFileNames.add("upload/book/"+file.getName());
+	                }
+	            }
+	        }
+
+	        return imageFileNames;
+	    }
 }

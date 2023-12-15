@@ -43,6 +43,8 @@ public class AdminController {
 		}
 	}
 	
+	
+	
 	@GetMapping("/searchuser")
 	public String searchUser(Model model, HttpSession session) {
 		getPage(model, "admin/search-user", "searchUserFragment");
@@ -81,6 +83,14 @@ public class AdminController {
 		User user = userService.getUser(id);
 		user.setBan(true);
 		userService.banState(user);
+	}
+	
+	@ResponseBody
+	@PostMapping("adminUser")
+	public void adminUser(@RequestParam(name = "id") Integer id) {
+		User user = userService.getUser(id);
+		user.setAdmin(true);
+		userService.adminState(user);
 	}
 	
 	@ResponseBody

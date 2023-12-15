@@ -34,6 +34,7 @@ dependencies {
 	implementation 'com.googlecode.json-simple:json-simple:1.1.1'
 	implementation 'javax.servlet:javax.servlet-api:4.0.1'
 	implementation fileTree(dir: 'lib', include: ['*.jar'])
+	compileJava.options.compilerArgs.add("-parameters")
 }
 
 tasks.named('test') {

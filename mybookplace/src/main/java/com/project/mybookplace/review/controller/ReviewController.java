@@ -57,13 +57,27 @@ public class ReviewController {
 		
 		
 		// 모든 리뷰를 가져와 order 파라미터의 기준으로 정렬
+		List<Review> tempReviewList = reviewService.getReviewAll(start, order);
+		
+		for(int i=0; i<tempReviewList.size(); i++) {
+			String scId = tempReviewList.get(i).getUserAcountId().substring(0, 2);
+			tempReviewList.get(i).setUserAcountId(scId + "****");
+		}
+		
+		List<Review> tempGenreList = reviewService.getGenre(start, genre, order);
+		
+		for(int i=0; i<tempGenreList.size(); i++) {
+			String scId = tempGenreList.get(i).getUserAcountId().substring(0, 2);
+			tempGenreList.get(i).setUserAcountId(scId + "****");
+		}
+				
 		if(genre.equals("기본")) {
-			model.addAttribute("reviewList", likesCount(reviewService.getReviewAll(start, order)));
+			model.addAttribute("reviewList", likesCount(tempReviewList));
 		} else {
 			if(reviewService.getGenre(start, genre, order).isEmpty()) {
 				model.addAttribute("reviewList", null);
 			} else {
-				model.addAttribute("reviewList", likesCount(reviewService.getGenre(start, genre, order)));
+				model.addAttribute("reviewList", likesCount(tempGenreList));
 			}
 		}
 		// 페이지 수 보내주기(value는 한 페이지에 표시될 리뷰의 수)
@@ -131,8 +145,10 @@ public class ReviewController {
 			}
 		}
 		
-		tempReview.setContent(tempReview.getContent().replace("\n", "<br>"));
+		String scId = tempReview.getUserAcountId().substring(0, 2);
 		
+		tempReview.setContent(tempReview.getContent().replace("\n", "<br>"));
+		tempReview.setUserAcountId(scId + "****");
 		model.addAttribute("reviewData", tempReview);
 		model.addAttribute("likes", likesService.likesCount(id));
 		

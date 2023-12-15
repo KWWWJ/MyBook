@@ -126,3 +126,8 @@
     margin-left: 3px;
     cursor: pointer;
 }
+
+.user-acount {
+    display: flex;
+    align-items: center;
+}

@@ -22,4 +22,5 @@ public class Review {
 	private boolean isBan = false;
 	private Timestamp createdAt;
 	private String userName;
+	private String userAcountId;
 }
