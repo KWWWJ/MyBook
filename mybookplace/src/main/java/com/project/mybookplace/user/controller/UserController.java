@@ -44,7 +44,7 @@ public class UserController {
 		return "index/layout.html";
 	}
 	
-	@PostMapping("/userInfo")
+	@PostMapping("userInfo")
 	public String registUser(@RequestParam Map<String, String> data) {
 		User user = new User();
 		user.setName(data.get("name"));
@@ -57,7 +57,7 @@ public class UserController {
 		return "redirect:/home";
 	}
 	
-	@PostMapping("/login")
+	@PostMapping("login")
 	public String loginPage(@RequestParam Map<String, String> data, HttpSession session) {
 		
 		try {
