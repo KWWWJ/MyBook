@@ -32,6 +32,9 @@
  ## 리뷰 검색
   * 유저의 아이디 검색으로 유저의 밴 한 리뷰 출력
 
+ ## 이벤트 베너 관리
+  * 베너의 이미지를 추가하거나 삭제.
+
 # 정리 문서
  *https://www.canva.com/design/DAF3G1ERJuM/jAjPhel40c8Bg2AtKg_K_w/edit?utm_content=DAF3G1ERJuM&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
 
