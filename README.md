@@ -36,7 +36,7 @@
   * 베너의 이미지를 추가하거나 삭제.
 
 # 정리 문서
- *https://www.canva.com/design/DAF3G1ERJuM/jAjPhel40c8Bg2AtKg_K_w/edit?utm_content=DAF3G1ERJuM&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+ * https://www.canva.com/design/DAF3G1ERJuM/jAjPhel40c8Bg2AtKg_K_w/edit?utm_content=DAF3G1ERJuM&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
 
 # My Book Place 방문하기
- *https://www.lemonade.pe.kr/home
+ * https://www.lemonade.pe.kr/home
