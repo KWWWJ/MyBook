@@ -1,16 +1,19 @@
 # My Book Place
-
+  * 작업 기간 : 2023.12.04 ~ 2023.12.18
+  * 개발 환경 : SpringBoot 3.0 / Java 17 / Gradle project
 # 프로젝트의 목적
  * 책을 추천하고 리뷰를 작성가능한 사이트 만들기.
 
 # 사용한 스택
  * back-end : Java, Spring Boot, Gradle
- * front-end : Axios, Bootstrap, Lodash, HTML, CSS, Javascript
+ * front-end : Axios, Bootstrap, HTML, CSS, Javascript, Lodash
  * db, server :  apache-tomcat10, MySQL, aladin api 
 
 # 기능
+ ## 회원가입
+  * 유저가 입력한 데이터 무결성 검사 후 
+
  * 한 주단위로 변하는 베스트셀러를 API로 받아온다.
- * 회원가입과 로그인을 통해 리뷰를 작성할 수 있다.
  * 책의 제목, 혹은 작가로 검색하여 원하는 책을 찾아볼 수 있다.
  * 책의 장르로 등록순 베스트셀러순으로 볼 수 있다.
 
