@@ -23,8 +23,8 @@ public class IndexController {
 	@Autowired
 	UserService userService;
 	
-	private static final String UPLOAD_EVENT_DIRECTORY = "src/main/resources/static/upload/event/";
-	private static final String UPLOAD_BOOK_DIRECTORY = "src/main/resources/static/upload/book/";
+	private static final String UPLOAD_EVENT_DIRECTORY = "/usr/local/apache-tomcat-10.1.17/webapps/ROOT/WEB-INF/classes/static/upload/event/";
+	private static final String UPLOAD_BOOK_DIRECTORY = "/usr/local/apache-tomcat-10.1.17/webapps/ROOT/WEB-INF/classes/static/upload/book/";
 	@GetMapping("/home")
 	public String home(Model model, HttpSession session) {
 		

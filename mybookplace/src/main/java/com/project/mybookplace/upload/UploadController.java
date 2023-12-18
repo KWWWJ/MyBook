@@ -21,14 +21,14 @@ import java.util.UUID;
 @RestController
 public class UploadController {
 	
-	 private static final String DELETE_EVENT_DIRECTORY = "src/main/resources/static/upload/event/";
-	 private static final String DELETE_BOOK_DIRECTORY = "src/main/resources/static/upload/book/";
+	 private static final String DELETE_EVENT_DIRECTORY = "/usr/local/apache-tomcat-10.1.17/webapps/ROOT/WEB-INF/classes/static/upload/event/";
+	 private static final String DELETE_BOOK_DIRECTORY = "/usr/local/apache-tomcat-10.1.17/webapps/ROOT/WEB-INF/classes/static/upload/book/";
 
 
-    @PostMapping("/upload/event")
+    @PostMapping("upload/event")
     public ResponseEntity<String> handleFileUploadEvent(@RequestPart("file") MultipartFile file) {
         try {
-            String uploadDirectory = "src\\main\\resources\\static\\upload\\event\\";
+            String uploadDirectory = "/usr/local/apache-tomcat-10.1.17/webapps/ROOT/WEB-INF/classes/static/upload/event/";
 
             Path uploadPath = Paths.get(uploadDirectory);
 
@@ -51,10 +51,10 @@ public class UploadController {
         }
     }
     
-    @PostMapping("/upload/book")
+    @PostMapping("upload/book")
     public ResponseEntity<String> handleFileUploadBook(@RequestPart("file") MultipartFile file) {
         try {
-            String uploadDirectory = "src\\main\\resources\\static\\upload\\book\\";
+            String uploadDirectory = "/usr/local/apache-tomcat-10.1.17/webapps/ROOT/WEB-INF/classes/static/upload/book/";
 
             Path uploadPath = Paths.get(uploadDirectory);
 

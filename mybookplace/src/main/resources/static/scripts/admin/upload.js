@@ -7,7 +7,7 @@ fileUploadFormEvent.addEventListener('submit', async (event) => {
     const formData = new FormData(fileUploadFormEvent);
 
     try {
-        const response = await fetch('/upload/event', {
+        const response = await fetch('upload/event', {
             method: 'POST',
             body: formData,
         });
@@ -30,7 +30,7 @@ fileUploadFormBook.addEventListener('submit', async (event) => {
     const formData = new FormData(fileUploadFormBook);
 
     try {
-        const response = await fetch('/upload/book', {
+        const response = await fetch('upload/book', {
             method: 'POST',
             body: formData,
         });

@@ -34,33 +34,33 @@
                         <ul class="pagination">
                             <li class="page-item" th:if="${nowPage} > 1">
                                 <a class="page-link"
-                                    th:href="@{genre(page=1, order=${param.order}, category=${param.category})}"
+                                    th:href="@{genre(page=1, order=${param.order}, categoryid=${param.categoryid}, categoryname=${param.categoryname})}"
                                     aria-label="Previous">
                                     <span aria-hidden="true">&laquo;</span>
                                 </a>
                             </li>
                             <li class="page-item" th:if="${nowPage} > 5">
                                 <a class="page-link"
-                                    th:href="@{genre(page=${nowPage-5}, order=${param.order}, category=${param.category})}"
+                                    th:href="@{genre(page=${nowPage-5}, order=${param.order}, categoryid=${param.categoryid}, categoryname=${param.categoryname})}"
                                     aria-label="Previous">
                                     <span aria-hidden="true">&lt;</span>
                                 </a>
                             </li>
                             <li th:each="page : ${#numbers.sequence(startPage, pageCount)}" class="page-item">
                                 <a class="page-link"
-                                    th:href="@{genre(page=${page}, order=${param.order}, category=${param.category})}">[[${page}]]</a>
+                                    th:href="@{genre(page=${page}, order=${param.order}, categoryid=${param.categoryid}, categoryname=${param.categoryname})}">[[${page}]]</a>
                             </li>
 
                             <li class="page-item" th:if="16 > ${nowPage}">
                                 <a class="page-link"
-                                    th:href="@{genre(page=${nowPage}+5, order=${param.order}, category=${param.category})}"
+                                    th:href="@{genre(page=${nowPage}+5, order=${param.order}, categoryid=${param.categoryid}, categoryname=${param.categoryname})}"
                                     aria-label="Next">
                                     <span aria-hidden="true">&gt;</span>
                                 </a>
                             </li>
                             <li class="page-item" th:if="20 > ${nowPage}">
                                 <a class="page-link"
-                                    th:href="@{genre(page=20, order=${param.order}, category=${param.category})}"
+                                    th:href="@{genre(page=20, order=${param.order}, categoryid=${param.categoryid}, categoryname=${param.categoryname})}"
                                     aria-label="Next">
                                     <span aria-hidden="true">&raquo;</span>
                                 </a>
