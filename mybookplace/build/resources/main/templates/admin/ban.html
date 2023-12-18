@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head th:fragment="banFragmentHead">
+    <meta charset="UTF-8">
+
+</head>
+
+<body>
+    <div th:fragment="banFragment">
+        <link rel="stylesheet" href="styles/admin/ban.css">
+        <div id="ban-area">
+            <input id="search-user" type="text" value="" placeholder="유저의 아이디를 입력하세요.">
+            <div class="list-title">Ban List</div>
+            <div id="ban-list"></div>
+        </div>
+        <script src="/scripts/admin/ban-review.js"></script>
+    </div>
+</body>
+
+</html>

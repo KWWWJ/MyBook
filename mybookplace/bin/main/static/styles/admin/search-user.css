@@ -1,0 +1,44 @@
+@charset "UTF-8";
+
+#search-user-area {
+    width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.list-title {
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.user-info-box {
+    display: flex;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #c1c1c1;
+}
+
+.admin-btn {
+    width: fit-content;
+    height: fit-content;
+    border: none;
+    color: #ffffff;
+    background: black;
+}
+
+.ban-btn {
+    width: fit-content;
+    height: fit-content;
+    border: none;
+    color: #ffffff;
+    background: black;
+    margin: 0 10px;
+}
+
+.admin-btn:hover {
+    color: #c1c1c1;
+}
+
+.ban-btn:hover {
+    color: #c1c1c1;
+}

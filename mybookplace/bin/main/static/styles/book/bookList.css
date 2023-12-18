@@ -1,0 +1,173 @@
+@charset "UTF-8";
+
+#book-list {
+    padding: 30px;
+}
+
+#book-list div {
+    display: flex;
+    align-items: center;
+    padding: 20px 20px;
+    font-weight: 700;
+    font-family: 'Gothic A1', sans-serif;
+    background: #fbfbfb;
+}
+
+#book-list img {
+    width: 120px;
+    cursor: pointer;
+    border: 1px solid rgb(206, 206, 206);
+}
+
+.book-info {
+    border-bottom: 1px solid #ededed;
+}
+
+.pagenation-box {
+    display: flex;
+    justify-content: center;
+}
+
+#open-category {
+    position: relative;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    flex-direction: column;
+    align-content: center;
+    flex-wrap: wrap;
+    max-width: 400px;
+}
+
+.category-font {
+    text-align: center;
+    font-size: 17px;
+    font-weight: 700;
+    border: 1px solid #d0cccc;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+    width: 100%;
+}
+
+.order-box {
+    display: flex;
+    margin-left: auto;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+}
+
+.order-btn-recently {
+    cursor: pointer;
+    width: 100px;
+    height: 20px;
+    font-size: 15px;
+    text-align: center;
+    color: rgb(209, 209, 209);
+}
+
+.order-btn-bestseller {
+    cursor: pointer;
+    width: 100px;
+    height: 20px;
+    font-size: 15px;
+    text-align: center;
+    color: rgb(209, 209, 209);
+}
+
+#category-list {
+    position: absolute;
+    display: flex;
+    border: 1px solid #cdcdcd;
+    background: white;
+    height: 0;
+    width: 100%;
+    right: 50%;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    visibility: hidden;
+    transition: all 0.7s;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.on {
+    visibility: visible !important;
+    height: 480px !important;
+}
+
+.open {
+    display: block;
+}
+
+.main-category-box {
+    width: 100%;
+    overflow: scroll;
+}
+
+.main-category-box::-webkit-scrollbar {
+    width: 8px;
+}
+
+.main-category-box::-webkit-scrollbar-thumb {
+    height: 30%;
+    background: gray;
+    border-radius: 10px;
+}
+
+.main-category-box::-webkit-scrollbar-track {
+    background: white;
+}
+
+.main-category {
+    display: flex;
+    cursor: pointer;
+    text-align: center;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0 0 0;
+    width: 100%;
+    height: 65px;
+    font-weight: 900;
+}
+
+.main-category:hover {
+    background: rgb(194, 194, 194);
+}
+
+#category-list li {
+    display: none;
+    cursor: pointer;
+    list-style: none;
+    margin-right: 10px;
+    color: rgb(0, 0, 0);
+    padding: 10px;
+    width: 150px;
+    height: 60px;
+    text-align: center;
+}
+
+#category-list li.on {
+    display: block;
+}
+
+#category-list li:hover {
+    background: rgb(179, 179, 179);
+}
+
+#category-list p {
+    font-size: 15px;
+    font-weight: 700;
+}
+
+#category-name {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 700;
+    font-family: 'Gothic A1', sans-serif;
+    font-family: 'Gowun Dodum', sans-serif;
+}

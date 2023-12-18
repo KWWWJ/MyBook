@@ -1,0 +1,117 @@
+@charset "UTF-8book";
+
+.user-info-top {
+    width: 700px;
+    height: 400px;
+    background-image: url('/images/user/user-info.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.user-review-area {
+    width: 700px;
+    height: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+    overflow: auto;
+}
+
+.user-review-area::-webkit-scrollbar {
+    width: 8px;
+}
+
+.user-review-area::-webkit-scrollbar-thumb {
+    height: 30%;
+    background: gray;
+    border-radius: 10px;
+}
+
+.user-review-area::-webkit-scrollbar-track {
+    background: white;
+}
+
+.review-bar {
+    display: flex;
+    align-items: flex-end;
+    font-size: 30px;
+    width: fit-content;
+}
+
+.review-bar img {
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
+}
+
+.user-name {
+    display: flex;
+    padding-top: 170px;
+    padding-left: 30px;
+    font-weight: 700;
+}
+
+.user-id {
+    display: flex;
+    padding-left: 30px;
+    font-weight: 700;
+}
+
+.user-email {
+    display: flex;
+    padding-left: 30px;
+    font-weight: 700;
+}
+
+.review-box {
+    border-bottom: 1px solid rgb(216, 216, 216);
+    padding: 10px 0;
+}
+
+.review-title {
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.review-title:hover {
+    font-weight: 700;
+}
+
+.book-name {
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.book-name:hover {
+    font-weight: 700;
+}
+
+.order {
+    display: flex;
+    margin-left: 400px;
+    font-size: 12px;
+    align-items: center;
+}
+
+.order p {
+    cursor: pointer;
+    color: rgb(190, 190, 190);
+}
+
+.order p:hover {
+    color: black;
+}
+
+.point {
+    font-size: 5px;
+}
+
+.user-review-id {
+    display: block;
+}
+
+.user-review-like {
+    display: none;
+}

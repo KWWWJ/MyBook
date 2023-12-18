@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head th:fragment="uploadFragmentHead">
+    <meta charset="UTF-8">
+
+</head>
+
+<body>
+    <div th:fragment="uploadFragment">
+        <link rel="stylesheet" href="styles/admin/upload.css">
+        <div id="upload-area">
+            <div class="list-title">이벤트 사진 등록</div>
+            <div class="upload-box">
+                <form id="upload-form-event" action="upload/event" method="POST" name="myPage-form"
+                    enctype="multipart/form-data">
+                    <input id="input-image" type="file" name="file">
+                    <input type="submit" value="등록">
+                </form>
+                <div class="img-box">
+                    <div class="pev-img" th:each="item : ${eventImageFileNames}">
+                        <img th:src="${item}">
+                        <button id="deleteButton" th:onclick="deleteFileEvent([[${item}]])">삭제하기</button>
+                    </div>
+                </div>
+            </div>
+            <div class="line-area"></div>
+            <div class="list-title">추천도서 사진 등록</div>
+            <div class="upload-box">
+                <form id="upload-form-book" action="upload/book" method="POST" name="myPage-form"
+                    enctype="multipart/form-data">
+                    <input id="input-image" type="file" name="file">
+                    <input type="submit" value="등록">
+                </form>
+                <div class="img-box">
+                    <div class="pev-img" th:each="item : ${bookImageFileNames}">
+                        <img th:src="${item}" alt="Card">
+                        <button id="deleteButton" th:onclick="deleteFileBook([[${item}]])">삭제하기</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <script src="/scripts/admin/upload.js"></script>
+    </div>
+</body>
+
+</html>

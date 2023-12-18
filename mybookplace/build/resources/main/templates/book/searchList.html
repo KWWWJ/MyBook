@@ -1,0 +1,73 @@
+<html lang="ko">
+
+<head th:fragment="searchListFragmentHead">
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <div th:fragment="searchListFragment">
+        <link rel="stylesheet" href="styles/search/searchList.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Gothic+A1&family=Gowun+Dodum&display=swap"
+            rel="stylesheet">
+        <div id="book-list-area">
+            <div id="search-result-area">
+                <p>'</p>
+                <p id="result"></p>
+                <p>'의 검색결과입니다.</p>
+                <div class="order-box">
+                    <div class="order-btn-title">제목</div>
+                    <div class="order-btn-author">작가</div>
+                </div>
+            </div>
+            <div class="book-list-area">
+                <div id="category-name"></div>
+                <div id="book-list"></div>
+                <div class="non-result"></div>
+                <div class="pagenation-box">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item" th:if="${nowPage} > 1">
+                                <a class="page-link"
+                                    th:href="@{search(page=1, type=${param.type}, search=${param.search})}"
+                                    aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li class="page-item" th:if="${nowPage} > 5">
+                                <a class="page-link"
+                                    th:href="@{search(page=${nowPage-5}, type=${param.type}, search=${param.search})}"
+                                    aria-label="Previous">
+                                    <span aria-hidden="true">&lt;</span>
+                                </a>
+                            </li>
+                            <li th:each="page : ${#numbers.sequence(startPage, searchPageCount)}" class="page-item">
+                                <a class="page-link"
+                                    th:href="@{search(page=${page}, type=${param.type}, search=${param.search})}">[[${page}]]</a>
+                            </li>
+
+                            <li class="page-item" th:if="${allPage} > ${nowPage}">
+                                <a class="page-link"
+                                    th:href="@{search(page=${nowPage}+5, type=${param.type}, search=${param.search})}"
+                                    aria-label="Next">
+                                    <span aria-hidden="true">&gt;</span>
+                                </a>
+                            </li>
+                            <li class="page-item" th:if="${allPage} > ${nowPage}">
+                                <a class="page-link"
+                                    th:href="@{search(page=20, type=${param.type}, search=${param.search})}"
+                                    aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <script src="scripts/public/searchList.js"></script>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+<html lang="ko">
+
+<head th:fragment="bookListFragmentHead">
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <div th:fragment="bookListFragment">
+        <link rel="stylesheet" href="styles/book/bookList.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Gothic+A1&family=Gowun+Dodum&display=swap"
+            rel="stylesheet">
+        <div id="book-list-area">
+            <div class="search-box-area"></div>
+            <div class="book-list-area">
+                <div class="top-category-area">
+                    <div id="category-name"></div>
+                    <div class="category-book-area">
+                        <div id="open-category">
+                            <div class="category-font">카테고리</div>
+                            <div id="category-list"></div>
+                        </div>
+                    </div>
+                    <div class="order-box">
+                        <div class="order-btn-recently">등록순</div>
+                        <div class="order-btn-bestseller">베스트셀러</div>
+                    </div>
+                </div>
+
+                <div id="book-list"></div>
+                <div class="pagenation-box">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item" th:if="${nowPage} > 1">
+                                <a class="page-link"
+                                    th:href="@{genre(page=1, order=${param.order}, categoryid=${param.categoryid}, categoryname=${param.categoryname})}"
+                                    aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li class="page-item" th:if="${nowPage} > 5">
+                                <a class="page-link"
+                                    th:href="@{genre(page=${nowPage-5}, order=${param.order}, categoryid=${param.categoryid}, categoryname=${param.categoryname})}"
+                                    aria-label="Previous">
+                                    <span aria-hidden="true">&lt;</span>
+                                </a>
+                            </li>
+                            <li th:each="page : ${#numbers.sequence(startPage, pageCount)}" class="page-item">
+                                <a class="page-link"
+                                    th:href="@{genre(page=${page}, order=${param.order}, categoryid=${param.categoryid}, categoryname=${param.categoryname})}">[[${page}]]</a>
+                            </li>
+
+                            <li class="page-item" th:if="16 > ${nowPage}">
+                                <a class="page-link"
+                                    th:href="@{genre(page=${nowPage}+5, order=${param.order}, categoryid=${param.categoryid}, categoryname=${param.categoryname})}"
+                                    aria-label="Next">
+                                    <span aria-hidden="true">&gt;</span>
+                                </a>
+                            </li>
+                            <li class="page-item" th:if="20 > ${nowPage}">
+                                <a class="page-link"
+                                    th:href="@{genre(page=20, order=${param.order}, categoryid=${param.categoryid}, categoryname=${param.categoryname})}"
+                                    aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <script src="scripts/book/bookList.js"></script>
+    </div>
+</body>
+
+</html>

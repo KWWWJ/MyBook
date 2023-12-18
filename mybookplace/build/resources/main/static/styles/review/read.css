@@ -1,0 +1,135 @@
+@charset "UTF-8";
+
+#read-area {
+    display: flex;
+    width: 950px;
+    margin-bottom: 40px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.category-box {
+    display: flex;
+    width: 150px;
+    height: 700px;
+    padding-top: 30px;
+    border: 1px solid rgb(216, 216, 216);
+    flex-direction: column;
+    align-items: center;
+    margin-left: auto;
+    overflow: auto;
+}
+
+.category-box::-webkit-scrollbar {
+    display: none
+}
+
+.category-box p {
+    cursor: pointer;
+    width: 130px;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgb(216, 216, 216);
+}
+
+.category-box p:hover {
+    font-weight: 700;
+}
+
+.category-box a {
+    color: inherit;
+    text-decoration: none;
+    width: 130px;
+    text-align: center;
+    padding: 10px;
+}
+
+.category-box a:hover {
+    color: black;
+    font-weight: 700;
+}
+
+.order-id {
+    width: 130px;
+    border-bottom: 1px solid rgb(216, 216, 216);
+}
+
+.category-line {
+    font-size: 7px;
+    width: 130px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.read-box {
+    position: relative;
+    width: 70%;
+    min-height: 500px;
+    border: 1px solid black;
+    margin-right: auto;
+    margin-left: 30px;
+    padding: 30px;
+}
+
+.user-box {
+    border-bottom: 1px solid #ebe7e7;
+    padding: 5px 0;
+}
+
+.user-ban-box {
+    display: flex;
+}
+
+#user-ban {
+    width: 30px;
+    height: 20px;
+    font-size: 13px;
+    text-align: center;
+    background: black;
+    color: white;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+#user-ban:hover {
+    color: gray;
+}
+
+.read-title {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.read-book-name {
+    font-size: 13px;
+    padding: 5px 0;
+    margin-bottom: 10px;
+}
+
+.read-user-name {
+    font-size: 15px;
+}
+
+.read-content {
+    font-size: 13px;
+}
+
+.likes-box {
+    position: absolute;
+    display: flex;
+    bottom: 5%;
+    right: 5%;
+    align-items: center
+}
+
+.likes-box img {
+    width: 20px;
+    height: 20px;
+    margin-left: 3px;
+    cursor: pointer;
+}
+
+.user-acount {
+    display: flex;
+    align-items: center;
+}

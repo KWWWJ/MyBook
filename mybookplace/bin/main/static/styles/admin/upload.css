@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+#upload-area {
+    width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.upload-box {
+    padding: 20px;
+}
+
+.line-area {
+    border-bottom: 1px solid #c1c1c1;
+    margin-bottom: 20px;
+}
+
+.pev-img {
+    width: 200px;
+    margin: 10px;
+}
+
+.pev-img img {
+    width: 100%;
+}
+
+.img-box {
+    display: flex;
+    padding: 20px;
+}
+
+#deleteButton {
+    border: none;
+    background: none;
+    font-weight: 700;
+    color: #cbcbcb;
+}
+
+#deleteButton:hover {
+    color: black;
+}
