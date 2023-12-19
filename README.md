@@ -1,7 +1,7 @@
 # My Book Place
   * 작업 기간 : 2023.12.04 ~ 2023.12.18
   * 개발 환경 : SpringBoot 3.0 / Java 17 / Gradle project
-  * 
+    
 # 프로젝트의 목적
  * 책을 추천하고 리뷰를 작성가능한 사이트 만들기.
 
