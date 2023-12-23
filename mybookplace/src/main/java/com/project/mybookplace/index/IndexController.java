@@ -25,7 +25,7 @@ public class IndexController {
 	
 	private static final String UPLOAD_EVENT_DIRECTORY = "/usr/local/apache-tomcat-10.1.17/webapps/ROOT/WEB-INF/classes/static/upload/event/";
 	private static final String UPLOAD_BOOK_DIRECTORY = "/usr/local/apache-tomcat-10.1.17/webapps/ROOT/WEB-INF/classes/static/upload/book/";
-	@GetMapping("/home")
+	@GetMapping("/")
 	public String home(Model model, HttpSession session) {
 		
 		List<String> eventImageFileNames = getEventImageFileNames();
@@ -108,7 +108,7 @@ public class IndexController {
 	}
 	
 	 private List<String> getEventImageFileNames() {
-	        List<String> imageFileNames = new ArrayList();
+	        List<String> imageFileNames = new ArrayList<String>();
 	        File uploadDirectory = new File(UPLOAD_EVENT_DIRECTORY);
 	        File[] files = uploadDirectory.listFiles();
 
@@ -124,7 +124,7 @@ public class IndexController {
 	    }
 	 
 	 private List<String> getBookImageFileNames() {
-	        List<String> imageFileNames = new ArrayList();
+	        List<String> imageFileNames = new ArrayList<String>();
 	        File uploadDirectory = new File(UPLOAD_BOOK_DIRECTORY);
 	        File[] files = uploadDirectory.listFiles();
 

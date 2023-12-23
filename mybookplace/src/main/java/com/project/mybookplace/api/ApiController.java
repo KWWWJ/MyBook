@@ -133,7 +133,7 @@ public class ApiController {
 		 URI aladinUri = UriComponentsBuilder
 	                .fromUriString("http://www.aladin.co.kr")
 	                .path("/ttb/api/ItemList.aspx")
-	                .queryParam("ttbkey","ttbbrilliantpop1102001")
+	                .queryParam("ttbkey","ttbbrilliantpop1102003")
 	                .queryParam("QueryType","Bestseller")
 	                .queryParam("MaxResults",50)
 	                .queryParam("start",start)
@@ -164,7 +164,7 @@ public class ApiController {
 		 URI aladinUri = UriComponentsBuilder
 	                .fromUriString("http://www.aladin.co.kr")
 	                .path("/ttb/api/ItemList.aspx")
-	                .queryParam("ttbkey","ttbbrilliantpop1102001")
+	                .queryParam("ttbkey","ttbbrilliantpop1102003")
 	                .queryParam("QueryType",type)
 	                .queryParam("MaxResults",10)
 	                .queryParam("start",start)
@@ -195,7 +195,7 @@ public class ApiController {
 		 URI aladinUri = UriComponentsBuilder
 	                .fromUriString("http://www.aladin.co.kr")
 	                .path("/ttb/api/ItemLookUp.aspx")
-	                .queryParam("ttbkey","ttbbrilliantpop1102001")
+	                .queryParam("ttbkey","ttbbrilliantpop1102003")
 	                .queryParam("ItemIdType","ISBN13")
 	                .queryParam("ItemId",bookId)
 	                .queryParam("output","js")
@@ -223,7 +223,7 @@ public class ApiController {
 		 URI aladinUri = UriComponentsBuilder
 	                .fromUriString("http://www.aladin.co.kr")
 	                .path("/ttb/api/ItemLookUp.aspx")
-	                .queryParam("ttbkey","ttbbrilliantpop1102001")
+	                .queryParam("ttbkey","ttbbrilliantpop1102003")
 	                .queryParam("ItemIdType","ISBN")
 	                .queryParam("ItemId",bookId)
 	                .queryParam("output","js")
@@ -251,7 +251,7 @@ public class ApiController {
 		 URI aladinUri = UriComponentsBuilder
 	                .fromUriString("http://www.aladin.co.kr")
 	                .path("/ttb/api/ItemList.aspx")
-	                .queryParam("ttbkey","ttbbrilliantpop1102001")
+	                .queryParam("ttbkey","ttbbrilliantpop1102003")
 	                .queryParam("QueryType",order)
 	                .queryParam("MaxResults",10)
 	                .queryParam("start",page)
@@ -282,7 +282,7 @@ public class ApiController {
 		 URI aladinUri = UriComponentsBuilder
 				 .fromUriString("http://www.aladin.co.kr")
 	                .path("/ttb/api/ItemSearch.aspx")
-	                .queryParam("ttbkey","ttbbrilliantpop1102001")
+	                .queryParam("ttbkey","ttbbrilliantpop1102003")
 	                .queryParam("Query",title)
 	                .queryParam("QueryType",order)
 	                .queryParam("MaxResults",50)
@@ -314,7 +314,7 @@ public class ApiController {
 		 URI aladinUri = UriComponentsBuilder
 				 .fromUriString("http://www.aladin.co.kr")
 	                .path("/ttb/api/ItemSearch.aspx")
-	                .queryParam("ttbkey","ttbbrilliantpop1102001")
+	                .queryParam("ttbkey","ttbbrilliantpop1102003")
 	                .queryParam("Query",search)
 	                .queryParam("QueryType",order)
 	                .queryParam("MaxResults",10)

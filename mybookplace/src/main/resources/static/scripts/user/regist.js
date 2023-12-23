@@ -17,7 +17,7 @@ fistForm.addEventListener('submit', (e) => checkInfo(e))
 
 function checkInfo(e) {
     const idReg = /^[a-z0-9]{3,20}$/i;
-    const pwReg = /^[a-z](?=.*[\!\@\#\$\%\^\&\*])(?=.*[0-9]).{10,30}$/i;
+    const pwReg = /^(?=.*[\!\@\#\$\%\^\&\*])(?=.*[0-9]).{8,30}$/i;
     const koReg = /^[ㄱ-ㅎㅏ-ㅣ가-힣]/g;
     const emailReg = /^[A-Z0-9\.\_\%\+\-]+@[[A-Z0-9\.\-]+(.com|.net|.co.kr|.org)$/i;
 
@@ -37,7 +37,7 @@ function checkInfo(e) {
             e.preventDefault();
         } else {
             console.log(e.target.password.value)
-            msg = "비밀번호에는 대소문자, 특수문자가 하나 이상씩 포함되어야합니다.";
+            msg = "비밀번호에는 특수문자가 하나 이상씩 포함되어야합니다.";
             e.preventDefault();
         }
     } else if (tempName.length < 4 || tempName.length > 20) {

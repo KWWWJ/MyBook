@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -93,7 +92,7 @@ public class ReviewController {
 	}
 	
 	// likes를 따로 정리하기 위한 메서드
-	private List<Review> likesCount(List list){
+	private List<Review> likesCount(List<Review> list){
 		List<Review> tempList = list;
 		for(int i=0; i<tempList.size(); i++) {
 			tempList.get(i).setLikes(likesService.likesCount(tempList.get(i).getId()));

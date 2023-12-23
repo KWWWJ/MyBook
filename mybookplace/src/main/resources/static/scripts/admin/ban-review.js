@@ -4,15 +4,15 @@ const searchReview = document.getElementById('search-user');
 const getBanReview = async (id) => {
     const banList = (await axios.post("getBanReview", null, { params: { "id": id } })).data;
     return banList;
-}
+};
 
 searchReview.addEventListener('keydown', (e) => keydownEvent(e));
 
 function keydownEvent(e) {
     if (e.keyCode == 13 || e.key == 'Enter') {
         setBanReview();
-    }
-}
+    };
+};
 
 function setBanReview() {
     const id = searchReview.value;
@@ -35,5 +35,5 @@ function setBanReview() {
             });
         }
     });
-}
+};
 

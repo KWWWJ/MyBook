@@ -1,5 +1,6 @@
 package com.project.mybookplace.user.controller;
 
+import java.util.Iterator;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,9 +53,16 @@ public class UserController {
 		user.setPassword(data.get("password"));
 		user.setEmail(data.get("email"));
 		
+		for (int i = 0; i < userService.seaechAll().size(); i++) {
+			if(user.getEmail() == userService.seaechAll().get(i).getEmail()) {
+				return "redirect:/regist";
+			}
+		}
+		
+		
 		userService.regist(user);
 		
-		return "redirect:/home";
+		return "redirect:/";
 	}
 	
 	@PostMapping("login")
@@ -85,7 +93,7 @@ public class UserController {
 			
 		}
 		
-		return "redirect:/home";
+		return "redirect:/";
 	}
 	
 	@GetMapping("/logout")
@@ -94,7 +102,7 @@ public class UserController {
 		session.setAttribute("userName", null);
 		session.setAttribute("userId", null);
 		
-		return "redirect:/home";
+		return "redirect:/";
 	}
 	
 	private void getPage(Model model, String html, String fragment) {

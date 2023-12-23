@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.project.mybookplace.review.dao.ReviewDAO;
 import com.project.mybookplace.review.domain.Review;
-import com.project.mybookplace.user.domain.User;
 
 @Service
 public class ReviewService {
