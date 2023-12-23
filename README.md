@@ -1,7 +1,8 @@
 # My Book Place
   * 작업 기간 : 2023.12.04 ~ 2023.12.18
   * 개발 환경 : SpringBoot 3.0 / Java 17 / Gradle project
-    
+  * My Book Place 방문하기 : https://www.lemonade.pe.kr/home
+  * 
 # 프로젝트의 목적
  * 책을 추천하고 리뷰를 작성가능한 사이트 만들기.
 
@@ -38,5 +39,3 @@
 # 정리 문서
  * https://www.canva.com/design/DAF3G1ERJuM/jAjPhel40c8Bg2AtKg_K_w/edit?utm_content=DAF3G1ERJuM&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
 
-# My Book Place 방문하기
- * https://www.lemonade.pe.kr/home
